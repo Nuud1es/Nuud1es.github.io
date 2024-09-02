@@ -48,9 +48,9 @@ const Nav = props => {
     React.createElement(React.Fragment, null, /*#__PURE__*/
     React.createElement("nav", { id: "navbar" }, /*#__PURE__*/
     React.createElement("div", { className: "nav-wrapper" }, /*#__PURE__*/
-    React.createElement("p", { className: "brand" }, "yago", /*#__PURE__*/
+    React.createElement("p", { className: "brand" }, "Joe", /*#__PURE__*/
 
-    React.createElement("strong", null, "est\xE9vez")), /*#__PURE__*/
+    React.createElement("strong", null, " Rudling")), /*#__PURE__*/
 
     React.createElement("a", {
       onClick: props.toggleMenu,
@@ -79,9 +79,9 @@ const Header = props => {
     React.createElement("div", { className: "container" }, /*#__PURE__*/
     React.createElement("h1", null, /*#__PURE__*/
     React.createElement("span", { className: "line" }, "I do"), /*#__PURE__*/
-    React.createElement("span", { className: "line" }, "graphic design"), /*#__PURE__*/
+
     React.createElement("span", { className: "line" }, /*#__PURE__*/
-    React.createElement("span", { className: "color" }, "&"), " code.")), /*#__PURE__*/
+    React.createElement("span", { className: "color" }, "   Game Devlopment"))), /*#__PURE__*/
 
 
     React.createElement("div", { className: "buttons" }, /*#__PURE__*/
@@ -106,48 +106,49 @@ const About = props => {
     React.createElement("div", { className: "wrapper" }, /*#__PURE__*/
     React.createElement("article", null, /*#__PURE__*/
     React.createElement("div", { className: "title" }, /*#__PURE__*/
-    React.createElement("h3", null, "Who's this guy?"), /*#__PURE__*/
+    React.createElement("h3", null, "Who's am i?"), /*#__PURE__*/
     React.createElement("p", { className: "separator" })), /*#__PURE__*/
 
     React.createElement("div", { className: "desc full" }, /*#__PURE__*/
-    React.createElement("h4", { className: "subtitle" }, "My name is Yago."), /*#__PURE__*/
-    React.createElement("p", null, "I am a web developer and UX designer based in the beautiful west coast of Spain, Galicia."), /*#__PURE__*/
+    React.createElement("h4", { className: "subtitle" }, "My name is Joe."), /*#__PURE__*/
+    React.createElement("p", null, "I am a student at Norwich University of Arts, studying Games Development."), /*#__PURE__*/
 
 
-
-    React.createElement("p", null, "I really enjoy solving problems as well as making things pretty and easy to use. I can't stop learning new things; the more, the better. I also love photography, a hobby I'm taking along since the good old film cameras. Oh, and rice with milk; I have a passion for rice with milk!")), /*#__PURE__*/
-
+    React.createElement("p", null, "Hi, I\u2019m Joe Rudling, a student at Norwich University of Arts, studying Games Development."), /*#__PURE__*/
 
 
+    React.createElement("p", null, "I\u2019m passionate about VR having owned an Oculus Rift CV1 back in 2017 and then upgrading to an Oculus Quest 2 in 2020."), /*#__PURE__*/
+
+
+    React.createElement("p", null, "I use the Quest to develop VR games with complex mechanics such as Inverse Kinematics to make the game more Immersive as well as working on a head-based locomotion system to allow those with motion sickness to still gain a good VR experience with no limitations."), /*#__PURE__*/
+
+
+    React.createElement("p", null, "I am also working at Norwich VR both using VR in an industry standard as well as upgrading there technology to improve clients experiences within VR")), /*#__PURE__*/
 
 
 
     React.createElement("div", { className: "title" }, /*#__PURE__*/
-    React.createElement("h3", null, "What does he do?"), /*#__PURE__*/
+    React.createElement("h3", null, "What do I do?"), /*#__PURE__*/
     React.createElement("p", { className: "separator" })), /*#__PURE__*/
 
     React.createElement("div", { className: "desc" }, /*#__PURE__*/
-    React.createElement("h4", { className: "subtitle" }, "I'm a programmer."), /*#__PURE__*/
-    React.createElement("p", null, "For the front-end I usually work with Javascript, either standalone or including popular frameworks like ReactJS and VueJS. I also make the web pretty by using Sass, CSS and, whenever needed, any of their friends: Bootstrap, Bulma, etc."), /*#__PURE__*/
+    React.createElement("h4", { className: "subtitle" }, "I'm a Unreal Engine programmer."), /*#__PURE__*/
+    React.createElement("p", null, "I've used Unreal Engine 4/5 for the past 4 years working mainly with Blueprints and C++, I've worked with VR using a Quest 2 and Deployed to the headset using gradle."), /*#__PURE__*/
 
 
-
-
-    React.createElement("p", null, "For the back-end I also work with Javascript (NodeJS, Express, MongoDB, etc). But, of course, whenever the project requires PHP, I do PHP as well (Wordpress, Laravel, etc).")), /*#__PURE__*/
+    React.createElement("p", null, "I've also done some group projects whilst at University working with a team of artists and developers, you can view it on my ",
+    ' ', /*#__PURE__*/
+    React.createElement("a", { href: "https://itch.io/profile/nuud1es", target: "_blank", rel: "noopener noreferrer" }, "Itch.io"), " page")), /*#__PURE__*/
 
 
 
 
     React.createElement("div", { className: "desc" }, /*#__PURE__*/
-    React.createElement("h4", { className: "subtitle" }, "Also a designer."), /*#__PURE__*/
-    React.createElement("p", null, "I feel comfortable working with many Adobe products. Photoshop, Illustrator, InDesign, Lightroom or Xd are some kind of industry standards and I love working with them. I'm not limited to them, though: Gimp, Inkscape or Figma are also very valid applications that I've been working with."), /*#__PURE__*/
+    React.createElement("h4", { className: "subtitle" }, "And a bit of a Jack of all trades"), /*#__PURE__*/
+    React.createElement("p", null, "I've learnt blender and Maya whilst at College to 3d model and later animate in Unreal engine"), /*#__PURE__*/
 
 
-
-
-
-    React.createElement("p", null, "User interfaces, brochures, books, branding... You name it! As I mentioned, creating pretty things is particularly important for me."))))));
-
+    React.createElement("p", null, "And learn't the princibles behind game design aswell which is usefull when working on game mechanics"))))));
 
 
 
@@ -218,13 +219,7 @@ const Projects = props => {
     React.createElement("h3", { className: "title" }, "My Works"), /*#__PURE__*/
     React.createElement("p", { className: "separator" }), /*#__PURE__*/
     React.createElement("p", { className: "subtitle" }, "Here's a list of ", /*#__PURE__*/
-    React.createElement("u", null, "most"), " of the projects I've been working on lately. All of these were built during my coding camp adventure on",
-    ' ', /*#__PURE__*/
-    React.createElement("a", { href: "https://www.freecodecamp.org/", target: "_blank", rel: "noopener noreferrer" }, "freeCodeCamp"), ", where I've been coding for almost 7 months non-stop until I completed all the projects required to get my Full-Stack Developer certification.")), /*#__PURE__*/
-
-
-
-
+    React.createElement("u", null, "most"), " of the projects I've been working on lately. most of these were done during College")), /*#__PURE__*/
 
 
     React.createElement("div", { className: "projects-wrapper" }, /*#__PURE__*/
