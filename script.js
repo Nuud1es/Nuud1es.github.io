@@ -1,76 +1,55 @@
-Vue.config.devtools = true;
+const thumbs = document.querySelectorAll('.thumb li');
+const infoSlider = document.querySelectorAll('.info-slider');
+const items = document.querySelectorAll('.item');
 
-Vue.component('card', {
-  template: `
-    <div class="card-wrap"
-      @mousemove="handleMouseMove"
-      @mouseenter="handleMouseEnter"
-      @mouseleave="handleMouseLeave"
-      ref="card">
-      <div class="card"
-        :style="cardStyle">
-        <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
-        <div class="card-info">
-          <slot name="header"></slot>
-          <slot name="content"></slot>
-        </div>
-      </div>
-    </div>`,
-  mounted() {
-    this.width = this.$refs.card.offsetWidth;
-    this.height = this.$refs.card.offsetHeight;
-  },
-  props: ['dataImage'],
-  data: () => ({
-    width: 0,
-    height: 0,
-    mouseX: 0,
-    mouseY: 0,
-    mouseLeaveDelay: null }),
+let index = 0;
 
-  computed: {
-    mousePX() {
-      return this.mouseX / this.width;
-    },
-    mousePY() {
-      return this.mouseY / this.height;
-    },
-    cardStyle() {
-      const rX = this.mousePX * 30;
-      const rY = this.mousePY * -30;
-      return {
-        transform: `rotateY(${rX}deg) rotateX(${rY}deg)` };
+thumbs.forEach((thumb, ind) => {
+    thumb.addEventListener('click', (event) => {
 
-    },
-    cardBgTransform() {
-      const tX = this.mousePX * -40;
-      const tY = this.mousePY * -40;
-      return {
-        transform: `translateX(${tX}px) translateY(${tY}px)` };
+        setTimeout(() => {
+            document.querySelector('.thumb .selected').classList.remove('selected');
+            thumb.classList.add('selected');
+        }, 100);
 
-    },
-    cardBgImage() {
-      return {
-        backgroundImage: `url(${this.dataImage})` };
+        thumbs.forEach(thum => {
+            thum.classList.add('disabled');
+            setTimeout(() => {
+                thum.classList.remove('disabled');
+            }, 100);
+        });
 
-    } },
+        let anySelected = false;
+        let current = event.target.parentElement.nextElementSibling;
 
-  methods: {
-    handleMouseMove(e) {
-      this.mouseX = e.pageX - this.$refs.card.offsetLeft - this.width / 2;
-      this.mouseY = e.pageY - this.$refs.card.offsetTop - this.height / 2;
-    },
-    handleMouseEnter() {
-      clearTimeout(this.mouseLeaveDelay);
-    },
-    handleMouseLeave() {
-      this.mouseLeaveDelay = setTimeout(() => {
-        this.mouseX = 0;
-        this.mouseY = 0;
-      }, 1000);
-    } } });
+        while(current !== null && !anySelected){
+            anySelected = anySelected || current.matches('.selected');
+            current = current.nextElementSibling
 
+            if(anySelected){
+                items[index].classList.add('previously-active');
 
+                setTimeout(() => {
+                    document.querySelector('.item.previously-active').classList.remove('previously-active');
+                }, 100);
 
-const app = new Vue({
-  el: '#app' });
+                index = ind;
+                items[index].classList.add('back-active');
+
+                setTimeout(() => {
+                    document.querySelector('.item.back-active').classList.remove('back-active');
+                }, 100);
+            }
+        }
+
+        index = ind;
+
+        infoSlider.forEach(slide => {
+            slide.style.transform = `translateY(${index * -100}%)`;
+        });
+
+        document.querySelector('.item.active').classList.remove('active');
+        items[index].classList.add('active');
+
+    });
+});
