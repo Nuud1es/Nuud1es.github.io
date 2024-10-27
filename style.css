@@ -90,7 +90,7 @@ html, body {
   color: violet;
 }
 .frontend-side.split-pane button:hover, .split-pane a.button:hover {
-  color: blue;
+  color: #000000;
 }
 
 #split-pane-or {
