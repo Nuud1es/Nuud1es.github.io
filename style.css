@@ -11,11 +11,11 @@ html, body {
 }
 
 .frontend-side {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74452/website-code.png");
+  background-image: url("https://raw.githubusercontent.com/Nuud1es/Nuud1es.github.io/refs/heads/main/placeholder.gif");
 }
 
 .uiux-side {
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/74452/website-post-its.png");
+  background-image: url("https://raw.githubusercontent.com/Nuud1es/Nuud1es.github.io/refs/heads/main/EscapeRoom.webp");
 }
 
 .split-pane {
@@ -26,7 +26,7 @@ html, body {
   height: 50%;
   min-height: 9em;
   font-size: 2em;
-  color: white;
+  color: #878787;
   font-family: 'Open Sans', sans-serif;
 	font-weight:300;
 ;
@@ -64,7 +64,7 @@ html, body {
   font-family: 'Open Sans', sans-serif;
 	font-weight:800;
   background: none;
-  border: 1px solid white;
+  border: 1px solid #000000;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -76,18 +76,18 @@ html, body {
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   text-decoration: none;
-  color: white;
+  color: #000000;
   display: inline-block;
 	cursor: pointer;
 }
 .split-pane button:hover, .split-pane a.button:hover {
   text-decoration: none;
-  background-color: white;
-  border-color: white;
+  background-color: rgba(255, 148, 41, 0.16);
+  border-color: #6e6e6e;
 	cursor: pointer;
 }
 .uiux-side.split-pane button:hover, .split-pane a.button:hover {
-  color: violet;
+  color: #ff7200;
 }
 .frontend-side.split-pane button:hover, .split-pane a.button:hover {
   color: #000000;

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="24c9cbca-99f0-45fd-8889-9c40efa05e97" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EscapeRoomsGames.html" beforeDir="false" afterPath="$PROJECT_DIR$/EscapeRoomsGames.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
@@ -43,7 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1730036988728</updated>
       <workItem from="1730036990320" duration="161000" />
-      <workItem from="1730037361778" duration="347000" />
+      <workItem from="1730037361778" duration="1800000" />
     </task>
     <servers />
   </component>
