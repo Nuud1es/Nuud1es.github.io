@@ -53,3 +53,4 @@ thumbs.forEach((thumb, ind) => {
 
     });
 });
+
