@@ -17,6 +17,17 @@ html, body {
 .uiux-side {
   background-image: url("https://raw.githubusercontent.com/Nuud1es/Nuud1es.github.io/refs/heads/main/EscapeRoom.webp");
 }
+.new-game-side {
+  height: 100px; /* Set a specific height for the container */
+  overflow: hidden; /* Hide any overflow */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-image: url('https://raw.githubusercontent.com/Nuud1es/Nuud1es.github.io/refs/heads/main/EscapeRoom.webp'); /* Set your background image URL */
+  background-size: cover; /* Cover the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the background from repeating */
+  
+}
 
 .split-pane {
   padding-top: 1em;
@@ -64,7 +75,7 @@ html, body {
   font-family: 'Open Sans', sans-serif;
 	font-weight:800;
   background: none;
-  border: 1px solid #000000;
+  border: 1px solid #777777;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -76,7 +87,7 @@ html, body {
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   text-decoration: none;
-  color: #000000;
+  color: #d62121;
   display: inline-block;
 	cursor: pointer;
 }
@@ -167,7 +178,7 @@ html, body {
   background: transparent;
   border: 2px solid #ffffff;
   border-radius: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   font-size: 16px;
   color: #fff;
   text-decoration: none;
