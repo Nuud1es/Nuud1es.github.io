@@ -12,7 +12,9 @@ Vue.component('card', {
         <div class="card-bg" :style="[cardBgTransform, cardBgImage]"></div>
         <div class="card-info">
           <slot name="header"></slot>
+          <slot name="tags"></slot>
           <slot name="content"></slot>
+         
         </div>
       </div>
     </div>`,

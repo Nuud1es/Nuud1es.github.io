@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24c9cbca-99f0-45fd-8889-9c40efa05e97" name="Changes" comment="" />
+    <list default="true" id="24c9cbca-99f0-45fd-8889-9c40efa05e97" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Arcade.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Arcade.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/Herozone.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/Herozone.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,18 +27,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -47,7 +54,7 @@
       <workItem from="1731159290386" duration="2980000" />
       <workItem from="1731162486945" duration="3357000" />
       <workItem from="1731166932158" duration="2211000" />
-      <workItem from="1731169201009" duration="1399000" />
+      <workItem from="1731169201009" duration="6179000" />
     </task>
     <servers />
   </component>
@@ -57,5 +64,9 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
