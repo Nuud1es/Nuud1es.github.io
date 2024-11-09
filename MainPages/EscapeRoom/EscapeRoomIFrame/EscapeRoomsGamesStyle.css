@@ -7,6 +7,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+
 body{
     overflow: hidden;
 }
@@ -153,10 +154,11 @@ body{
     list-style: none;
     z-index: 100;
 }
-
+ 
 .thumb li{
-    width: 95px;
-    height: 95px;
+ /* scale side menu*/   
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
