@@ -3,7 +3,7 @@ body {
   font-family: "Raleway";
   font-size: 14px;
   font-weight: 500;
-  background-color: #BCAAA4;
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -20,6 +20,13 @@ body {
   font-size: 18px;
   font-weight: 700;
   color: #5D4037;
+  text-align: center;
+}
+.Label {
+  font-family: "Raleway";
+  font-size: 50px;
+  font-weight: 700;
+  color: #ffffff;
   text-align: center;
 }
 
