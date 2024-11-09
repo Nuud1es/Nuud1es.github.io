@@ -72,9 +72,10 @@ body{
 .img-box img{
     position: absolute;
     bottom: 0;
-    width: 54%;
+    width: 30%;
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, .2));
-    transform: translateX(20%);
+    transform: translateX(30%);
+    transform: translateY(-20%);
 }
 
 .item:nth-child(2) .img-box img{
