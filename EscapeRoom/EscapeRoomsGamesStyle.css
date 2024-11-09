@@ -69,6 +69,14 @@ body{
     background: #5d2917;
 }
 
+
+.item:nth-child(5) .img-box{
+    background: #56c6ac;
+}
+.item:nth-child(6) .img-box{
+    background: #aa56c6;
+}
+
 .img-box img{
     position: absolute;
     bottom: 0;
