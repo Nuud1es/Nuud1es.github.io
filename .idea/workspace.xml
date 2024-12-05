@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24c9cbca-99f0-45fd-8889-9c40efa05e97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Arcade.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Arcade.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/Herozone.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/Herozone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/MainPages/Arcade/Packages/Herozone/style.css" afterDir="false" />
+    <list default="true" id="f25d3c49-6ee9-4ec3-a357-8e4804b4611d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,44 +13,53 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/NorwichVR" />
   </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2o1VISlyF4XGUKkFlcq2Yq9dPjt" />
+  <component name="ProjectId" id="2po3dsbdQ6YXObvgyxVPI6U7Q5f" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Nuud1es.github.io/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="24c9cbca-99f0-45fd-8889-9c40efa05e97" name="Changes" comment="" />
-      <created>1730036988728</created>
+      <changelist id="f25d3c49-6ee9-4ec3-a357-8e4804b4611d" name="Changes" comment="" />
+      <created>1732810325685</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1730036988728</updated>
-      <workItem from="1730036990320" duration="161000" />
-      <workItem from="1730037361778" duration="1938000" />
-      <workItem from="1730382959420" duration="3440000" />
-      <workItem from="1731159290386" duration="2980000" />
-      <workItem from="1731162486945" duration="3357000" />
-      <workItem from="1731166932158" duration="2211000" />
-      <workItem from="1731169201009" duration="6179000" />
+      <updated>1732810325685</updated>
+      <workItem from="1732810326705" duration="254000" />
+      <workItem from="1733418697792" duration="4280000" />
+      <workItem from="1733424649363" duration="230000" />
+      <workItem from="1733425279046" duration="1238000" />
     </task>
     <servers />
   </component>
@@ -64,9 +69,5 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

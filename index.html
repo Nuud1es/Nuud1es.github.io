@@ -1,41 +1,758 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <title>Game list</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <title>Portfolio Webpage Example</title>
+  <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class='split-pane col-xs-12 col-sm-6 uiux-side'>
-    <div>
-        <div class='text-content'>
-            <div class="bold"></div>
-            <div class='big'>ESCAPE ROOMS</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://i.postimg.cc/9fqYVvxh/logo.png" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <aside class="sidebar " data-sidebar>
+            <div class="sidebar-info">
+                <figure class="avatar-box">
+                    <img src="LOGO.jpg" alt="avatar" width="80">
+                </figure>
+
+                <div class="info-content">
+                    <h1 class="name" title="Richard Hanrick">Joe Rudling</h1>
+                    <p class="title">Web Developer & Game Developer</p>
+                </div>
+
+                <button class="info-more-btn" data-sidebar-btn>
+                    <span>Show Contacts</span>
+                    <ion-icon name="chevron-down"></ion-icon>
+                </button>
+            </div>
+
+            <div class="sidebar-info-more">
+                <div class="separator"></div>
+
+                <ul class="contacts-list">
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Email</p>
+
+                            <a href="mailto:rudlingjoe@gmail.com" class="contact-link">rudlingjoe@gmail.com</a>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <ion-icon name="phone-portrait-outline"></ion-icon>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Phone</p>
+
+                            <a href="tel:+447731623604" class="contact-link">+44 07731 623604</a>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Birthday</p>
+
+                            <time datetime="1982-06-23">March 26, 2004</time>
+                        </div>
+                    </li>
+
+                    <li class="contact-item">
+                        <div class="icon-box">
+                            <ion-icon name="location-outline"></ion-icon>
+                        </div>
+
+                        <div class="contact-info">
+                            <p class="contact-title">Location</p>
+
+                            <address>UK, Norwich, Norfolk</address>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="separator"></div>
+
+                <ul class="social-list">
+                    <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                    <li class="social-item"><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <nav class="navbar">
+                <ul class="navbar-list">
+                    <li class="navbar-item"><button class="navbar-link active" data-nav-link>About</button></li>
+                    <li class="navbar-item"><button class="navbar-link" data-nav-link>Resume</button></li>
+                    <li class="navbar-item"><button class="navbar-link" data-nav-link>Portfolio</button></li>
+                    <li class="navbar-item"><button class="navbar-link" data-nav-link>Blog</button></li>
+                    <li class="navbar-item"><button class="navbar-link" data-nav-link>Contact</button></li>
+                </ul>
+            </nav>
+
+            <article class="about active" data-page="about">
+                <header>
+                    <h2 class="h2 article-title">About me</h2>
+                </header>
+
+                <section class="about-text">
+                    <p>I’m passionate about VR having owned an Oculus Rift CV1 back in 2017 and then upgrading to an Oculus Quest 2 in 2020.</p>
+                    <p>I use the Quest to develop VR games with complex mechanics such as Inverse Kinematics to make the game more Immersive as well as working on a head-based locomotion system to allow those with motion sickness to still gain a good VR experience with no limitations.</p>
+                    <p>I am also working at Norwich VR both using VR in an industry standard as well as upgrading there technology to improve clients experiences within VR.</p>
+                </section>
+
+                <section class="service">
+                    <h3 class="h3 service-title">What I'm doing</h3>
+
+                    <ul class="service-list">
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <img src="https://i.postimg.cc/4389jZkP/icon-design.png" alt="icon" width="40">
+                            </div>
+
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Game Development</h4>
+                                <p class="service-item-text">Using Unreal Engine 4/5 to bring ideas to life, using C++ and Blueprints</p>
+                            </div>
+                        </li>
+
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <img src="https://i.postimg.cc/ZqgqrqzG/icon-dev.png" alt="icon" width="40">
+                            </div>
+
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Web development</h4>
+                                <p class="service-item-text">Learning Web development as a side hobby, made this very website using it.</p>
+                            </div>
+                        </li>
+
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <img src="https://i.postimg.cc/xjLdzYxZ/icon-app.png" alt="icon" width="40">
+                            </div>
+
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">3D modeling</h4>
+                                <p class="service-item-text">I learnt Blender whilst learning game development and still use it. you can view my 3d work Here</p>
+                            </div>
+                        </li>
+
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <img src="https://i.postimg.cc/0NL8zHpx/icon-photo.png" alt="icon" width="40">
+                            </div>
+
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">Photography</h4>
+                                <p class="service-item-text">I make high-quality photos of any category at a professional level.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+<!--
+                <section class="testimonials">
+                    <h3 class="h3 testimonials-title">Testimonials</h3>
+
+                    <ul class="testimonials-list has-scrollbar">
+                        <li class="testimonials-item">
+                            <div class="content-card" data-testimonials-item>
+                                <figure class="testimonials-avatar-box">
+                                    <img src="https://i.postimg.cc/zGDHfn3G/avatar-1.png" alt="avatar" data-testimonials-avatar width="60">
+                                </figure>
+
+                                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel Lewis</h4>
+
+                                <div class="testimonials-text" data-testimonials-text>
+                                    <p>Richard was hired to create a corporate identity. It's modern, clean and with a beautiful design that got a lot of praises from colleagues and visitors. We were very pleased with the work done. He has a lot of experience and is very concerned about the needs of client.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="testimonials-item">
+                            <div class="content-card" data-testimonials-item>
+                                <figure class="testimonials-avatar-box">
+                                    <img src="https://i.postimg.cc/DwY0yHtx/avatar-2.png" alt="avatar" data-testimonials-avatar width="60">
+                                </figure>
+
+                                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica Miller</h4>
+
+                                <div class="testimonials-text" data-testimonials-text>
+                                    <p>Working with Richard has been an absolute pleasure. I was impressed with his attention to detail, his 3d artwork skills and his professional approach to our timelines and processes.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="testimonials-item">
+                            <div class="content-card" data-testimonials-item>
+                                <figure class="testimonials-avatar-box">
+                                    <img src="https://i.postimg.cc/fRFWhX9F/avatar-3.png" alt="avatar" data-testimonials-avatar width="60">
+                                </figure>
+
+                                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily Evans</h4>
+
+                                <div class="testimonials-text" data-testimonials-text>
+                                    <p>I couldn't be happier with the website that Richard created for us. His attention to detail and creativity is unmatched. Our clients frequently compliment the design, and it has significantly improved our brand image.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="testimonials-item">
+                            <div class="content-card" data-testimonials-item>
+                                <figure class="testimonials-avatar-box">
+                                    <img src="https://i.postimg.cc/zXv1Xv81/avatar-4.png" alt="avatar" data-testimonials-avatar width="60">
+                                </figure>
+
+                                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry Williams</h4>
+
+                                <div class="testimonials-text" data-testimonials-text>
+                                    <p>I was overwhelmed with the thought of redesigning my online store, but Richard made the process seamless. The site is not only visually appealing but also optimized for conversions. I've seen a 50% increase in traffic since the launch!</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+-->
+                <div class="modal-container " data-modal-container>
+                    <div class="overlay " data-overlay></div>
+
+                    <section class="testimonials-modal">
+                        <button class="modal-close-btn" data-modal-close-btn><ion-icon name="close-outline"></ion-icon></button>
+
+                        <div class="modal-img-wrapper">
+                            <figure class="modal-avatar-box">
+                                <img src="https://i.postimg.cc/zGDHfn3G/avatar-1.png" alt="Daniel Lewis" width="80" data-modal-img>
+                            </figure>
+
+                            <img src="https://i.postimg.cc/mZ00RwX7/icon-quote.png" alt="quote icon">
+                        </div>
+
+                        <div class="modal-content">
+                            <h4 class="h3 modal-title" data-modal-title>Daniel Lewis</h4>
+                            <time datetime="2023-06-14">14 June, 2023</time>
+
+                            <div class="modal-text" data-modal-text>
+                                <p>Richard was hired to create a corporate identity. It's modern, clean and with a beautiful design that got a lot of praises from colleagues and visitors. We were very pleased with the work done. He has a lot of experience and is very concerned about the needs of client.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+<!--
+                <section class="clients">
+                    <h3 class="h3 clients-title">Clients</h3>
+
+                    <ul class="clients-list has-scrollbar">
+                        <li class="clients-item">
+                            <a href="#"><img src="https://i.postimg.cc/YqfKyG66/logo-1-color.png" alt="logo"></a>
+                        </li>
+
+                        <li class="clients-item">
+                            <a href="#"><img src="https://i.postimg.cc/fWm6JtgG/logo-2-color.png" alt="logo"></a>
+                        </li>
+
+                        <li class="clients-item">
+                            <a href="#"><img src="https://i.postimg.cc/Bb07xpwd/logo-3-color.png" alt="logo"></a>
+                        </li>
+
+                        <li class="clients-item">
+                            <a href="#"><img src="https://i.postimg.cc/hv1yMmkh/logo-4-color.png" alt="logo"></a>
+                        </li>
+
+                        <li class="clients-item">
+                            <a href="#"><img src="https://i.postimg.cc/ry1P86Dc/logo-5-color.png" alt="logo"></a>
+                        </li>
+
+                        <li class="clients-item">
+                            <a href="#"><img src="https://i.postimg.cc/SsWDN8NV/logo-6-color.png" alt="logo"></a>
+                            
+                        </li>
+                    </ul>
+                </section>
+                -->
+            </article>
+      
+                <article class="resume " data-page="resume">
+                <header>
+                    <h2 class="h2 article-title">Resume</h2>
+                </header>
+
+                <section class="timeline">
+                    <div class="title-wrapper">
+                        <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
+
+                        <h3 class="h3">Education</h3>
+                    </div>
+
+                    <ol class="timeline-list">
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Norwich University of the Arts</h4>
+                            <span>2022 - Current</span>
+                            <p class="timeline-text">This course is a deep dive into unreal engine as well as C++ and working with other Indie dev’s and artist to create projects as a team, Overall I learn't about, databases, software engineering, problem solving, collaboration and communication soft skills.</p>
+                        </li>
+
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Access Creative College</h4>
+                            <span>2020 - 2022</span>
+                            <p class="timeline-text">This course went over game development in unreal engine as well as the design side on why gameplay elements are used as well as basic 3d modeling and Animating to import into Unreal Engine.</p>
+                        </li>
+                        
+                    </ol>
+                </section>
+
+                <section class="timeline">
+                    <div class="title-wrapper">
+                        <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
+
+                        <h3 class="h3">Experience</h3>
+                    </div>
+
+                    <ol class="timeline-list">
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">NorwichVr <span style="color: #8a8a8a;">Game Master / Tech admin</span></h4>
+                            <span>2015 - Present</span>
+                            <p class="timeline-text">•Helping people get through Virtual Escape Rooms with cryptic hints</p>
+                            <p class="timeline-text">•Setting up VR Headsets such as Vive Pro with Wireless adapters and Quest 2</p>
+                            <p class="timeline-text">•Setting up a Networking using Proxmox with opnsense and Ubiquiti equipment</p>
+                            <p class="timeline-text">•Teaching a team how to use headsets and basic debugging</p>
+                           
+                        </li>
+
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Player Research <span style="color: #8a8a8a;">Playtester</span></h4>
+                            <span>Aug 2023</span>
+                            <p class="timeline-text">•Testing a VR game and giving feed back to the developers on playability </p>
+                        </li>
+
+                        <li class="timeline-item">
+                            <h4 class="h4 timeline-item-title">Newfangled Games <span style="color: #8a8a8a;">Playtester</span></h4>
+                            <span>Aug 2023</span>
+                            <p class="timeline-text">•Testing the game during my university course to find bugs and playability issues and report them in a bug report  </p>
+                        </li>
+                    </ol>
+                </section>
+                    <section class="timeline">
+                        <div class="title-wrapper">
+                            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
+
+                            <h3 class="h3">Experience</h3>
+                        </div>
+
+                        <ol class="timeline-list">
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">NorwichVr <span style="color: #8a8a8a;">Game Master / Tech admin</span></h4>
+                                <span>2015 - Present</span>
+                                <p class="timeline-text">•Helping people get through Virtual Escape Rooms with cryptic hints</p>
+                                <p class="timeline-text">•Setting up VR Headsets such as Vive Pro with Wireless adapters and Quest 2</p>
+                                <p class="timeline-text">•Setting up a Networking using Proxmox with opnsense and Ubiquiti equipment</p>
+                                <p class="timeline-text">•Teaching a team how to use headsets and basic debugging</p>
+
+                            </li>
+
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Player Research <span style="color: #8a8a8a;">Playtester</span></h4>
+                                <span>Aug 2023</span>
+                                <p class="timeline-text">•Testing a VR game and giving feed back to the developers on playability </p>
+                            </li>
+
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Newfangled Games <span style="color: #8a8a8a;">Playtester</span></h4>
+                                <span>Aug 2023</span>
+                                <p class="timeline-text">•Testing the game during my university course to find bugs and playability issues and report them in a bug report  </p>
+                            </li>
+                        </ol>
+                    </section>
+
+                <section class="skill">
+                    <h3 class="h3 skills-title">My Skills</h3>
+
+                    <ul class="skills-list content-card">
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">Game Development</h5>
+                                <data value="80">80%</data>
+                            </div>
+
+                            <div class="skills-progress-bg">
+                                <div class="skills-progress-fill" style="width: 80%;"></div>
+                            </div>
+                        </li>
+
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">3D modeling</h5>
+                                <data value="70">70%</data>
+                            </div>
+
+                            <div class="skills-progress-bg">
+                                <div class="skills-progress-fill" style="width: 70%;"></div>
+                            </div>
+                        </li>
+
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">Web Development</h5>
+                                <data value="90">60%</data>
+                            </div>
+
+                            <div class="skills-progress-bg">
+                                <div class="skills-progress-fill" style="width: 60%;"></div>
+                            </div>
+                        </li>
+
+                        <li class="skills-item">
+                            <div class="title-wrapper">
+                                <h5 class="h5">C++</h5>
+                                <data value="50">50%</data>
+                            </div>
+
+                            <div class="skills-progress-bg">
+                                <div class="skills-progress-fill" style="width: 50%;"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                    <section class="timeline">
+                        <div class="title-wrapper">
+                            <div class="icon-box"><ion-icon name="book-outline"></ion-icon></div>
+
+                            <h3 class="h3">Detailed Skills</h3>
+                        </div>
+
+                        <ol class="timeline-list">
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Technical Skills </h4>
+                                <span>Unreal Engine 4/5</span>
+                                <p class="timeline-text">Proficient in using Unreal Engine 4 and 5 for game development, including both Blueprints and C++ programming. </p>
+                                <span>UGame Development</span>
+                                <p class="timeline-text"> Strong understanding of game mechanics, physics, AI, and UI/UX design.
+                                </p>
+                                <span>Programming Languages</span>
+                                <p class="timeline-text">•Skilled in C++, HTML/CSS with experience in scripting and debugging.</p>
+                                <span>Problem-Solving</span>
+                                <p class="timeline-text">Strong analytical skills with a track record of identifying issues and implementing effective solutions in a timely manner.</p>
+
+                            </li>
+
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Professional Skills</h4>
+                                <span>Communication</span>
+                                <p class="timeline-text"> Excellent verbal and written communication skills developed through professional experience.
+                                </p>
+                                <span>Teamwork</span>
+                                <p class="timeline-text">Proven ability to work effectively in collaborative environments, contributing to team goals and project success.
+                                </p>
+                                <span>Problem-Solving</span>
+                                <p class="timeline-text">Strong analytical skills with a track record of identifying issues and implementing effective solutions in a timely manner.•Testing a VR game and giving feed back to the developers on playability </p>
+                            </li>
+
+                            <li class="timeline-item">
+                                <h4 class="h4 timeline-item-title">Additional Skills</h4>
+                                <span>Project Management</span>
+                                <p class="timeline-text">Experience managing tasks and timelines to ensure project milestones are met.</p>
+                                <span>Adaptability</span>
+                                <p class="timeline-text">Quick learner, able to adapt to new tools, technologies, and workflows.</p>
+                            </li>
+                        </ol>
+                    </section>
+            </article>
+
+            <article class="portfolio " data-page="portfolio">
+                <header>
+                    <h2 class="h2 article-title">Portfolio</h2>
+                </header>
+
+                <section class="projects">
+                    <ul class="filter-list">
+                        <li class="filter-item"><button class="active" data-filter-btn>All</button></li>
+                        <li class="filter-item"><button data-filter-btn>3D Artwork</button></li>
+                        <li class="filter-item"><button data-filter-btn>Unreal Engine</button></li>
+                        <li class="filter-item"><button data-filter-btn>Web Development</button></li>
+                    </ul>
+
+                    <div class="filter-select-box">
+                        <button class="filter-select " data-select>
+                            <div class="select-value" data-select-value>Select Category</div>
+
+                            <div class="select-icon">
+                                <ion-icon name="chevron-down"></ion-icon>
+                            </div>
+                        </button>
+
+                        <ul class="select-list">
+                            <li class="select-item"><button data-select-item>All</button></li>
+                            <li class="select-item"><button data-select-item>Web Design</button></li>
+                            <li class="select-item"><button data-select-item>Applications</button></li>
+                            <li class="select-item"><button data-select-item>Web Development</button></li>
+                        </ul>
+                    </div>
+
+                    <ul class="project-list">
+                        <li class="project-item active" data-filter-item data-category="unreal engine">
+                            <a href="#">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+
+                                    <img src="file:///home/nuudles/Downloads/RedRockFarm.png" alt="redrockfarm" loading="lazy">
+                                </figure>
+
+                                <h3 class="project-title">Red Rock Farm</h3>
+                                <p class="project-category">Unreal Engine</p>
+                            </a>
+                        </li>
+
+                        <li class="project-item active" data-filter-item data-category="unreal engine">
+                            <a href="#">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+
+                                    <img src="file:///home/nuudles/Downloads/FirstRender.png" alt="first render" loading="lazy">
+                                </figure>
+
+                                <h3 class="project-title">First render</h3>
+                                <p class="project-category">3D Artwork</p>
+                            </a>
+                        </li>
+
+                        <li class="project-item active" data-filter-item data-category="3d artwork">
+                            <a href="#">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+
+                                    <img src="file:///home/nuudles/Downloads/FogTest.png" alt="fog test" loading="lazy">
+                                </figure>
+
+                                <h3 class="project-title">Fog Test</h3>
+                                <p class="project-category">3D Artwork</p>
+                            </a>
+                        </li>
+
+                        <li class="project-item active" data-filter-item data-category="web development">
+                            <a href="#">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+
+                                    <img src="file:///home/nuudles/Downloads/NixieDisplay.png" alt="nixie display" loading="lazy">
+                                </figure>
+
+                                <h3 class="project-title">Nixie Display</h3>
+                                <p class="project-category">3D Artwork</p>
+                            </a>
+                        </li>
+
+                        <li class="project-item active" data-filter-item data-category="3d artwork">
+                            <a href="#">
+                                <figure class="project-img">
+                                    <div class="project-item-icon-box">
+                                        <ion-icon name="eye-outline"></ion-icon>
+                                    </div>
+
+                                    <img src="https://i.postimg.cc/43T0JKLw/project-5.png" alt="particle simulation" loading="lazy">
+                                </figure>
+
+                                <h3 class="project-title">Particle Simulation</h3>
+                                <p class="project-category">3D Artwork</p>
+                            </a>
+                        </li>
+
+                        
+                    </ul>
+                </section>
+            </article>
+
+            <article class="blog " data-page="blog">
+                <header>
+                    <h2 class="h2 article-title">Blog</h2>
+                </header>
+
+                <section class="blog-posts">
+                    <ul class="blog-posts-list">
+                        <li class="blog-post-item">
+                            <a href="#">
+                                    <figure class="blog-banner-box">
+                                        <img src="https://i.postimg.cc/DysCZrWs/blog-1.jpg" alt="Design conferences in 2024" loading="lazy">
+                                    </figure>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Design</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2024-02-23">Feb 23, 2024</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">Design conferences in 2024</h3>
+                                    <p class="blog-text">In 2024, several exciting design conferences are set to take place, offering opportunities for professionals and enthusiasts to connect, learn, and share innovative ideas.</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="blog-post-item">
+                            <a href="#">
+                                <figure class="blog-banner-box">
+                                    <img src="https://i.postimg.cc/QC7qFDMs/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                                </figure>
+
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Design</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2024-01-29">Jan 29, 2024</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">Best fonts every designer</h3>
+                                    <p class="blog-text">When it comes to typography, choosing the right font is essential for effective design. In this article, I'll bring a brief overview of some of the best fonts that every designer should consider incorporating into their toolkit.</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="blog-post-item">
+                            <a href="#">
+                                <figure class="blog-banner-box">
+                                    <img src="https://i.postimg.cc/W1T71QcL/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                                </figure>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Design</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2023-12-20">Dec 20, 2023</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">Design digest #80</h3>
+                                    <p class="blog-text">Hello, my friends. In this Design Digest, I'll show you a curated collection of the latest trends, insights, and innovations in the design world. This edition highlights key themes and discussions that are shaping the future of design.</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="blog-post-item">
+                            <a href="#">
+                                <figure class="blog-banner-box">
+                                    <img src="https://i.postimg.cc/2S0n8yxh/blog-4.jpg" alt="2023 UI interactions" loading="lazy">
+                                </figure>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Design</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2023-11-29">Nov 29, 2023</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">2023 UI interactions</h3>
+                                    <p class="blog-text">As we move into 2024, 2023 was marked by the rapidly evolution of the landscape of UI interactions, driven by advancements in technology and user expectations. Dive with me in this text to see the main areas changed in this year.</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="blog-post-item">
+                            <a href="#">
+                                <figure class="blog-banner-box">
+                                    <img src="https://i.postimg.cc/YCCmVkw9/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                                </figure>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Design</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2023-11-12">Nov 12, 2023</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
+                                    <p class="blog-text">In the realm of design, spacing is often an overlooked yet crucial element that can significantly impact the overall aesthetic and functionality of a composition. This post will emphasize the importance of white space, margins, and padding in creating visually appealing and effective designs.</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="blog-post-item">
+                            <a href="#">
+                                <figure class="blog-banner-box">
+                                    <img src="https://i.postimg.cc/zBCBvP16/blog-6.jpg" alt="Design digest #79" loading="lazy">
+                                </figure>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">Design</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2023-10-20">Oct 20, 2023</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">Design digest #79</h3>
+                                    <p class="blog-text">Hi, my friends. In this Design Digest I'll focus in the tools and resources that we use daily in our projects. Also, I'll include examples of software recommendations, online courses, and design communities that foster collaboration and learning.</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+
+            <article class="contact " data-page="contact">
+                <header>
+                    <h2 class="h2 article-title">Contact</h2>
+                </header>
+
+                <section class="mapbox" data-mapbox>
+                    <figure>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+                         width="400" height="300" loading="lazy"></iframe>
+                    </figure>
+                </section>
+
+                <section class="contact-form">
+                    <h3 class="h3 form-title">Contact Form</h3>
+
+                    <form action="#" class="form" data-form>
+                        <div class="input-wrapper">
+                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                            <input type="email" name="email" class="form-input" placeholder="Email Address" required data-form-input>
+                        </div>
+
+                        <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input=""></textarea>
+
+                        <button class="form-btn" type="submit" disabled data-form-btn>
+                            <ion-icon name="paper-plane"></ion-icon>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </section>
+            </article>
         </div>
-        <a href="MainPages/EscapeRoom.html">
-            <button>VIEW GAMES</button>
-        </a>
-    </div>
-</div>
-<div class='split-pane col-xs-12 col-sm-6 frontend-side'>
-    <div>
-        <div class='text-content'>
-            <div class="bold"></div>
-            <div class='big'>ARACDE PACKAGES</div>
-        </div>
-        <a href="MainPages/Arcade/Arcade.html">
-            <button>VIEW GAMES</button>
-        </a>
-    </div>
-</div>
-<div id='split-pane-or'>
-    <div>
-        <img src='https://raw.githubusercontent.com/Nuud1es/Nuud1es.github.io/refs/heads/main/nrvr.png'>
-    </div>
-</div>
+    </main>
+
+    <script src="main.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
 <!-- partial -->
+  <script  src="./script.js"></script>
 
 </body>
 </html>
