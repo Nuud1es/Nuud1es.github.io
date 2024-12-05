@@ -5,7 +5,64 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f25d3c49-6ee9-4ec3-a357-8e4804b4611d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/FirstRender.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/FogTest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/LOGO.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NixieDisplay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/projectSettingsUpdater.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/BA3a-BSc3a Final Project Proposal Guidelines 2024-25.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/EscapeRoom.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Arcade.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/Arrowsong.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/CookedUp.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/Cybershock.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/DeadAhead.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/EspionageExpress.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/Herozone.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/QuantumArena.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Vex/Vex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Vex/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Vex/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/DaggerofTime.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/Eclipse.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeMedusasGate.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeRoomsGames.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeRoomsGamesStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeTheLostPyramid.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/Huxley.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/Huxley2.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/blank.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/fight.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/home.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/nrvr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/placeholder.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/ParticleSimulation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/RedRockFarm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NorwichVR/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +85,7 @@
   &quot;keyToString&quot;: {
     &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -60,6 +118,9 @@
       <workItem from="1733418697792" duration="4280000" />
       <workItem from="1733424649363" duration="230000" />
       <workItem from="1733425279046" duration="1238000" />
+      <workItem from="1733426646757" duration="1333000" />
+      <workItem from="1733429068357" duration="529000" />
+      <workItem from="1733429606304" duration="1680000" />
     </task>
     <servers />
   </component>
