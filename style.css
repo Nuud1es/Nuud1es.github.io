@@ -469,7 +469,7 @@ article { display: none; }
     left: 0;
     transform: translate(15px, -25px);
     background: var(--bg-gradient-onyx);
-    border-radius: 14px;
+    border-radius: 0px;
     box-shadow: var(--shadow1);
 }
 
@@ -571,7 +571,7 @@ article { display: none; }
 .modal-avatar-box {
     background: var(--bg-gradient-onyx);
     width: max-content;
-    border-radius: 14px;
+    border-radius: 0px;
     margin-bottom: 15px;
     box-shadow: var(--shadow2);
 }
@@ -1107,7 +1107,7 @@ textarea.form-input {
 
     .sidebar-info { gap: 25px; }
 
-    .avatar-box { border-radius: 30px; }
+    .avatar-box { border-radius: 100%; }
         .avatar-box img { width: 120px; }
 
     .info-content .name { margin-bottom: 15px; }
@@ -1464,7 +1464,7 @@ textarea.form-input {
 
     h1 {
         font-size: 72px;
-        background: -webkit-linear-gradient(135deg, crimson, deepskyblue);
+        background: -webkit-linear-gradient(135deg, deepskyblue, deepskyblue);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     } 
