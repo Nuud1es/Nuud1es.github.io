@@ -797,6 +797,10 @@ article { display: none; }
         display: block;
         animation: scaleUp .25s ease forwards;
     }
+    .project-item.non {
+        
+        
+}
 
         @keyframes scaleUp {
             0% { transform: scale(0.5); }
