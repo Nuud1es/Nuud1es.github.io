@@ -6,7 +6,8 @@
     --bg-gradient-yellow1: linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%);
     --bg-gradient-yellow2: linear-gradient(135deg, hsla(45, 100%, 71%, .251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
     --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
-    --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+    --text-gradient-yellow: linear-gradient(to left
+    , hsl(0, 69%, 51%), hsl(180 100% 25.1%));
 
     --jet: hsl(0, 0%, 22%);
     --onyx: hsl(240, 1%, 17%);
@@ -15,12 +16,15 @@
     --smoky-black: hsl(0, 0%, 7%);
     --white1: hsl(0, 0%, 100%);
     --white2: hsl(0, 0%, 98%);
-    --orange-yellow-crayola: hsl(45, 100%, 72%);
+    --orange-yellow-crayola: hsl(0, 69%, 51%);
     --vegas-gold: hsl(45, 54%, 58%);
     --light-gray: hsl(0, 0%, 84%);
     --light-gray70: hsla(0, 0%, 84%, .7);
     --bittersweet-shimmer: hsl(0, 43%, 51%);
-
+    --teal: hsl(180 100% 25.1%);
+    --crimson: hsl(348 83.3% 47.1%);
+    
+    
     --ff-poppins: 'Poppins', sans-serif;
 
     --fs1: 24px;
@@ -119,7 +123,7 @@ main {
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    color: var(--orange-yellow-crayola);
+    color: var(--teal);
     box-shadow: var(--shadow1);
     z-index: 1;
 }
@@ -645,7 +649,7 @@ article { display: none; }
 }
 
     .timeline-list span {
-        color: var(--vegas-gold);
+        color: var(--teal);
         font-weight: var(--fw400);
         line-height: 1.6;
     }
@@ -1014,7 +1018,7 @@ textarea.form-input {
     position: relative;
     width: 100%;
     background: var(--border-gradient-onyx);
-    color: var(--orange-yellow-crayola);
+    color: var(--orange-yellow-crayola); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1310,7 +1314,7 @@ textarea.form-input {
     }
 
         .filter-item button:hover { color: var(--light-gray70); }
-        .filter-item button.active { color: var(--orange-yellow-crayola); }
+        .filter-item button.active { color: var(--crimson); }
 
     .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
 
@@ -1464,7 +1468,7 @@ textarea.form-input {
 
     h1 {
         font-size: 72px;
-        background: -webkit-linear-gradient(135deg, deepskyblue, deepskyblue);
+        background: -webkit-linear-gradient(135deg, crimson, teal);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     } 

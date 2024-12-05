@@ -5,64 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f25d3c49-6ee9-4ec3-a357-8e4804b4611d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/FirstRender.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/FogTest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/LOGO.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NixieDisplay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/.idea.Nuud1es.github.io.dir/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/BA3a-BSc3a Final Project Proposal Guidelines 2024-25.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/EscapeRoom.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Arcade.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/Arrowsong.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/CookedUp.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/Cybershock.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/DeadAhead.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/EspionageExpress.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/Herozone.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/QuantumArena.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Herozone/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Vex/Vex.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Vex/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/Packages/Vex/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/Arcade/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/DaggerofTime.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/Eclipse.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeMedusasGate.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeRoomsGames.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeRoomsGamesStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/EscapeTheLostPyramid.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/Huxley.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/Huxley2.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/EscapeRoomIFrame/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/EscapeRoom/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/MainPages/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/blank.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/fight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/home.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/nrvr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/placeholder.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/NorwichVR/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/ParticleSimulation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/RedRockFarm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NorwichVR/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/NorwichVR/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html.png" beforeDir="false" afterPath="$PROJECT_DIR$/html.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/NorwichVR" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -121,6 +67,8 @@
       <workItem from="1733426646757" duration="1333000" />
       <workItem from="1733429068357" duration="529000" />
       <workItem from="1733429606304" duration="3377000" />
+      <workItem from="1733433193637" duration="2169000" />
+      <workItem from="1733435372927" duration="722000" />
     </task>
     <servers />
   </component>
