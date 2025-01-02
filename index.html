@@ -578,14 +578,31 @@
                 <header>
                     <h2 class="h2 article-title">Contact</h2>
                 </header>
+                
 
-                <section class="mapbox" data-mapbox>
-                    <figure>
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfgRrq1I5sUsuW10mWhkO8BbZclRLvg0suZR8YiGoTs8efd-A/viewform?usp=sf_link"
-                     loading="lazy"></iframe>
-                    </figure>
+                <section class="contact-form">
+                    <h3 class="h3 form-title">Contact Form</h3>
+
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="445b8e8e-a096-444e-8056-9f3b745586d4">
+
+                        <div class="input-wrapper">
+                            <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                            <input type="email" name="email" class="form-input" placeholder="Email Address" required data-form-input>
+                        </div>
+
+                        <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input=""></textarea>
+
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <button class="form-btn" type="submit" disabled data-form-btn>
+                            <ion-icon name="paper-plane"></ion-icon>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
                 </section>
-
+                
+                
                
             </article>
         </div>
