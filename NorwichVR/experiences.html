@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norwich VR - Experiences</title>
+    <style>
+        * {
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Arial', sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background-color: #1a1a1a;
+            }
+
+            /* Header & Navigation */
+            .header {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+                padding: 1rem 0;
+            }
+
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 2rem;
+            }
+
+            .logo {
+                font-size: 2rem;
+                font-weight: bold;
+                color: #ff6b35;
+                text-decoration: none;
+            }
+
+            .nav-menu {
+                display: flex;
+                list-style: none;
+                gap: 2rem;
+            }
+
+            .nav-menu a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                cursor: pointer;
+            }
+
+            .nav-menu a:hover {
+                color: #ff6b35;
+            }
+            
+            .book-btn {
+                background: linear-gradient(135deg, #ff6b35, #f7931e);
+                color: #fff;
+                padding: 0.8rem 1.5rem;
+                border: none;
+                border-radius: 25px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+
+            /* Page Content */
+            .page-content {
+                padding-top: 100px;
+                min-height: 100vh;
+                background: #1a1a1a;
+                color: #fff;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .page-header {
+                text-align: center;
+                margin-bottom: 3rem;
+            }
+
+            .page-header h1 {
+                font-size: 3rem;
+                color: #ff6b35;
+                margin-bottom: 1rem;
+            }
+
+            /* Cards */
+            .card-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2rem;
+            }
+
+            .card {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border-radius: 15px;
+                padding: 2rem;
+                text-align: center;
+                color: #fff;
+                transition: transform 0.3s ease;
+                border: 1px solid rgba(255, 107, 53, 0.2);
+            }
+
+            .card:hover {
+                transform: translateY(-10px);
+            }
+
+            .card-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                color: #ff6b35;
+            }
+
+            .card-description {
+                margin-bottom: 1.5rem;
+                color: #ccc;
+            }
+
+            /* Footer */
+            .footer {
+                background: rgba(0, 0, 0, 0.95);
+                color: #fff;
+                text-align: center;
+                padding: 2rem 0;
+            }
+
+            .footer a {
+                color: #ff6b35;
+                text-decoration: none;
+                margin: 0 0.5rem;
+            }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+
+            /* Mobile Responsive */
+            @media (max-width: 768px) {
+                .desktop-nav {
+                    display: none;
+                }
+
+                .page-header h1 {
+                    font-size: 2rem;
+                }
+
+                .card-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Navigation -->
+<header class="header">
+    <nav class="nav-container">
+        <a href="#" class="logo">NorwichVR</a>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experiences.html">Experiences</a></li>
+            <li><a onclick="showPage('locations')">Location</a></li>
+            <li><a onclick="showPage('team-building')">Events & Parties</a></li>
+            <li><a onclick="showPage('about')">About</a></li>
+            <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+        <button class="book-btn" onclick="showPage('booking')">Book Now</button>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Experiences</h1>
+                <p>Discover a world of adventure with our carefully crafted escape experiences</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <img src="EscapeRoomImages/Huxley.webp" alt="Huxley" style="width: 50%; height: auto;">
+                    <h3 class="card-title">Huxley</h3>
+                    <p class="card-description">Uncover ancient secrets in this archaeology-themed adventure. Navigate through hidden chambers, decode hieroglyphic puzzles, and escape before the temple seals forever.</p>
+                    <h2 slot="tags" style="color: green; font-size: 20px;"> <i class="fa-solid fa-user-plus" style="color: green;"> 2-4</i>  <i class="fa-solid fa-globe" style="color: blue;"> </i> <i class="fa-solid fa-people-group"> </i> </h2>
+
+                </div>
+                <div class="card">
+                    <img src="EscapeRoomImages/Eclipse.webp" alt="Eclipse" style="width: 50%; height: auto;">
+                    <h3 class="card-title">Eclipse</h3>
+                    <p class="card-description">A thrilling sci-fi experience aboard a malfunctioning space station. Work together to restore critical systems and escape before the station's orbit decays.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 3-8 | <strong>Difficulty:</strong> ★★★★☆</p>
+                    <p><strong>Price:</strong> $40/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">Detective's Office</h3>
+                    <p class="card-description">Step into the shoes of a detective and solve a complex murder mystery using clues, evidence, and deductive reasoning.</p>
+                    <p><strong>Duration:</strong> 45 minutes | <strong>Players:</strong> 2-5 | <strong>Difficulty:</strong> ★★★☆☆</p>
+                    <p><strong>Price:</strong> $30/person</p>
+                </div>
+                <div class="card">
+                    <img src="EscapeRoomImages/Huxley.webp" alt="Arcade" style="width: 50%; height: auto;">
+                    <h3 class="card-title">Dead Ahead</h3>
+                    <p slot="content">The apocalypse is here! You and your friends make a last stand to defend against the undead.Do you have what it takes to survive the apocalypse? </p>
+                    <h2 slot="tags" style="color: green; font-size: 20px;"> <i class="fa-solid fa-user-plus" style="color: green;"> 2-4</i>  <i class="fa-duotone fa-solid fa-gun" style="color: red;"> </i> <i class="fa-solid fa-people-group"> </i> </h2>
+
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧪</div>
+                    <h3 class="card-title">Mad Scientist's Lab</h3>
+                    <p class="card-description">Escape from a deranged scientist's laboratory before becoming the next test subject in twisted experiments.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 3-7 | <strong>Difficulty:</strong> ★★★★☆</p>
+                    <p><strong>Price:</strong> $38/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏰</div>
+                    <h3 class="card-title">Medieval Castle</h3>
+                    <p class="card-description">Navigate the halls of an ancient castle to rescue the imprisoned princess and escape the dragon's lair.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 2-6 | <strong>Difficulty:</strong> ★★☆☆☆</p>
+                    <p><strong>Price:</strong> $33/person</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div>
+        <p>&copy; 2025 Norwich VR. All rights reserved.</p>
+        <nav>
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms & Conditions</a> |
+            <a href="#">Cookies</a>
+        </nav>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

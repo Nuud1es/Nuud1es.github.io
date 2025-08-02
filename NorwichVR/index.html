@@ -1,41 +1,676 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game list</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NorwichVR | Premium Escape Experiences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #1a1a1a;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff6b35;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover {
+            color: #ff6b35;
+        }
+
+        .book-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .book-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: #fff;
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            background: #1a1a1a;
+        }
+
+        .section-alt {
+            background: #2d2d2d;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #fff;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .card-description {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+        }
+
+        .card-btn {
+            background: transparent;
+            color: #ff6b35;
+            border: 2px solid #ff6b35;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .card-btn:hover {
+            background: #ff6b35;
+            color: #fff;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: 100px;
+            min-height: 100vh;
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        /* Page Navigation */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Show home page by default */
+        #home.page {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class='split-pane col-xs-12 col-sm-6 uiux-side'>
-    <div>
-        <div class='text-content'>
-            <div class="bold"></div>
-            <div class='big'>ESCAPE ROOMS</div>
-        </div>
-        <a href="MainPages/EscapeRoom.html">
-            <button>VIEW GAMES</button>
-        </a>
-    </div>
-</div>
-<div class='split-pane col-xs-12 col-sm-6 frontend-side'>
-    <div>
-        <div class='text-content'>
-            <div class="bold"></div>
-            <div class='big'>ARACDE PACKAGES</div>
-        </div>
-        <a href="MainPages/Arcade/Arcade.html">
-            <button>VIEW GAMES</button>
-        </a>
-    </div>
-</div>
-<div id='split-pane-or'>
-    <div>
-        <img src='https://raw.githubusercontent.com/Nuud1es/Nuud1es.github.io/refs/heads/main/nrvr.png'>
-    </div>
-</div>
-<!-- partial -->
+<!-- Navigation -->
+<header class="header">
+    <nav class="nav-container">
+        <a href="#" class="logo">NorwichVR</a>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experiences.html">Experiences</a></li>
+            <li><a onclick="showPage('locations')">Locations</a></li>
+            <li><a onclick="showPage('team-building')">Events & Parties</a></li>
+            <li><a onclick="showPage('about')">About</a></li>
+            <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+        <button class="book-btn" onclick="showPage('booking')">Book Now</button>
+    </nav>
+</header>
 
-</body>
-</html>
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Ultimate Adventure Awaits</h1>
+            <p>Step into immersive worlds where mystery meets excitement. Solve puzzles, find clues, and escape before time runs out in our premium themed experiences.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn cta-primary" onclick="showPage('booking')">Book Your Adventure</a>
+                <a href="#" class="cta-btn cta-secondary" onclick="showPage('experiences')">Explore Experiences</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences">
+        <div class="container">
+            <h2 class="section-title">Choose Your Adventure</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">
+    <img src="logo-vr-arcade.svg" alt="Arcade">
+</div>
+                    <h3 class="card-title">Virtual Escape Rooms</h3>
+                    <p class="card-description">Immerse yourself in out full length escape rooms that will challenge your wit and teamwork.</p>
+                    <button class="card-btn" onclick="showPage('experiences')">Discover More</button>
+                </div>
+                <div class="card">
+                    <img src="VRArena.svg" alt="Castle Icon">
+                    <h3 class="card-title">Virtual Arenas</h3>
+                    <p class="card-description">Try out our quick 15 minuite games </p>
+                    <button class="card-btn" onclick="showPage('experiences')">Discover More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Why Choose NorwichVR</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">⭐</div>
+                    <h3 class="card-title">5-Star Rated</h3>
+                    <p class="card-description">Premium experiences with exceptional production values and immersive storytelling.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">Team Building</h3>
+                    <p class="card-description">Perfect for corporate events and team bonding activities that everyone will remember.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Multiple Difficulty Levels</h3>
+                    <p class="card-description">From beginners to puzzle masters, we have challenges suited for every skill level.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title">Global Network</h3>
+                    <p class="card-description">With locations worldwide, you can enjoy our adventures wherever you are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- EXPERIENCES PAGE -->
+<div id="experiences" class="page">
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Experiences</h1>
+                <p>Discover a world of adventure with our carefully crafted escape experiences</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏺</div>
+                    <h3 class="card-title">The Lost Temple</h3>
+                    <p class="card-description">Uncover ancient secrets in this archaeology-themed adventure. Navigate through hidden chambers, decode hieroglyphic puzzles, and escape before the temple seals forever.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 2-6 | <strong>Difficulty:</strong> ★★★☆☆</p>
+                    <p><strong>Price:</strong> $35/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3 class="card-title">Space Station Omega</h3>
+                    <p class="card-description">A thrilling sci-fi experience aboard a malfunctioning space station. Work together to restore critical systems and escape before the station's orbit decays.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 3-8 | <strong>Difficulty:</strong> ★★★★☆</p>
+                    <p><strong>Price:</strong> $40/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">Detective's Office</h3>
+                    <p class="card-description">Step into the shoes of a detective and solve a complex murder mystery using clues, evidence, and deductive reasoning.</p>
+                    <p><strong>Duration:</strong> 45 minutes | <strong>Players:</strong> 2-5 | <strong>Difficulty:</strong> ★★★☆☆</p>
+                    <p><strong>Price:</strong> $30/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏴‍☠️</div>
+                    <h3 class="card-title">Pirate's Treasure</h3>
+                    <p class="card-description">Embark on a swashbuckling adventure to find Captain Blackbeard's legendary treasure before rival pirates arrive.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 2-6 | <strong>Difficulty:</strong> ★★☆☆☆</p>
+                    <p><strong>Price:</strong> $32/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧪</div>
+                    <h3 class="card-title">Mad Scientist's Lab</h3>
+                    <p class="card-description">Escape from a deranged scientist's laboratory before becoming the next test subject in twisted experiments.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 3-7 | <strong>Difficulty:</strong> ★★★★☆</p>
+                    <p><strong>Price:</strong> $38/person</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏰</div>
+                    <h3 class="card-title">Medieval Castle</h3>
+                    <p class="card-description">Navigate the halls of an ancient castle to rescue the imprisoned princess and escape the dragon's lair.</p>
+                    <p><strong>Duration:</strong> 60 minutes | <strong>Players:</strong> 2-6 | <strong>Difficulty:</strong> ★★☆☆☆</p>
+                    <p><strong>Price:</strong> $33/person</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LOCATIONS PAGE -->
+<div id="locations" class="page">
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Locations</h1>
+                <p>Find an NorwichVR experience near you</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">Downtown Central</h3>
+                    <p class="card-description">123 Adventure Street, City Center, State 12345</p>
+                    <p><strong>Hours:</strong> Mon-Thu 10am-10pm, Fri-Sun 10am-11pm</p>
+                    <p><strong>Features:</strong> 6 Premium Escape Rooms, VIP Lounge, Free Parking</p>
+                    <p><strong>Phone:</strong> (555) 123-QUEST</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌆</div>
+                    <h3 class="card-title">Westside Plaza</h3>
+                    <p class="card-description">456 Quest Avenue, West District, State 12346</p>
+                    <p><strong>Hours:</strong> Daily 11am-9pm</p>
+                    <p><strong>Features:</strong> 4 Themed Rooms, Team Building Spaces, Coffee Bar</p>
+                    <p><strong>Phone:</strong> (555) 456-WEST</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌳</div>
+                    <h3 class="card-title">Eastpark Location</h3>
+                    <p class="card-description">789 Puzzle Boulevard, East Park, State 12347</p>
+                    <p><strong>Hours:</strong> Mon-Thu 12pm-8pm, Fri-Sun 10am-10pm</p>
+                    <p><strong>Features:</strong> Family-Friendly, Kids Play Area, Birthday Packages</p>
+                    <p><strong>Phone:</strong> (555) 789-PARK</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛍️</div>
+                    <h3 class="card-title">Shopping Mall Hub</h3>
+                    <p class="card-description">Mall Level 2, Shopper's Paradise, State 12348</p>
+                    <p><strong>Hours:</strong> Mall hours 10am-9pm daily</p>
+                    <p><strong>Features:</strong> Compact Experiences, Food Court Access, Easy Parking</p>
+                    <p><strong>Phone:</strong> (555) 321-MALL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TEAM BUILDING PAGE -->
+<div id="team-building" class="page">
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Corporate Team Building</h1>
+                <p>Strengthen your team bonds through collaborative problem-solving adventures</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">👑</div>
+                    <h3 class="card-title">Executive Packages</h3>
+                    <p class="card-description">Premium experiences designed for C-level teams and board retreats with professional facilitation and luxury amenities.</p>
+                    <p><strong>Includes:</strong> Private VIP rooms, Professional facilitator, Catered refreshments, Custom challenges</p>
+                    <p><strong>Pricing:</strong> $899 (6-8 people) | $1,299 (9-12 people)</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">Department Outings</h3>
+                    <p class="card-description">Perfect for department-wide team building activities, celebrations, and fostering cross-departmental collaboration.</p>
+                    <p><strong>Includes:</strong> Multiple room bookings, Tournament competitions, Group discounts, Flexible scheduling</p>
+                    <p><strong>Pricing:</strong> $32/person (10-20) | $28/person (21-35) | $25/person (36-50)</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">New Employee Integration</h3>
+                    <p class="card-description">Help new hires bond with their teams through fun, collaborative experiences designed to break the ice.</p>
+                    <p><strong>Includes:</strong> Ice-breaker activities, Communication workshops, Trust-building exercises, Welcome packages</p>
+                    <p><strong>Pricing:</strong> $38/person (6-10) | $35/person (11-15)</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3 class="card-title">Remote Team Building</h3>
+                    <p class="card-description">Virtual escape room experiences for distributed teams and remote workers, bringing colleagues together across distances.</p>
+                    <p><strong>Includes:</strong> Online platforms, Video conference hosting, Digital escape rooms, Virtual facilitation</p>
+                    <p><strong>Pricing:</strong> $25/person (5-10) | $22/person (11-20) | $20/person (21-30)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT PAGE -->
+<div id="about" class="page">
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>About NorwichVR</h1>
+                <p>Pioneers in immersive entertainment experiences since 2018</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🌟</div>
+                    <h3 class="card-title">Our Story</h3>
+                    <p class="card-description">Founded in 2018 by experience designers, NorwichVR grew from a single escape room to a global network of premium entertainment venues. We believe in creating memories through immersive storytelling and innovative puzzle design.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Our Mission</h3>
+                    <p class="card-description">To provide world-class entertainment experiences that bring people together, challenge minds, and create lasting memories through innovative themed adventures and exceptional service.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3 class="card-title">Awards & Recognition</h3>
+                    <p class="card-description">Best Entertainment Venue 2023, Innovation in Experience Design, Customer Choice Award Winner, Top Team Building Provider, and recognition across 15 countries.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3 class="card-title">Global Presence</h3>
+                    <p class="card-description">50+ locations across 15 countries, 2M+ adventurers welcomed, 500+ corporate clients, 95% customer satisfaction rating, and 200+ local jobs created.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT PAGE -->
+<div id="contact" class="page">
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for bookings, questions, or partnerships</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">📞</div>
+                    <h3 class="card-title">General Inquiries</h3>
+                    <p class="card-description"><strong>Email:</strong> info@adventurequest.com</p>
+                    <p class="card-description"><strong>Phone:</strong> +1 (555) 123-QUEST</p>
+                    <p class="card-description"><strong>Hours:</strong> Mon-Fri 9am-6pm</p>
+                    <p class="card-description">Response within 24 hours</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <h3 class="card-title">Bookings & Reservations</h3>
+                    <p class="card-description"><strong>Online:</strong> Available 24/7</p>
+                    <p class="card-description"><strong>Phone:</strong> +1 (555) 456-BOOK</p>
+                    <p class="card-description"><strong>Hours:</strong> Daily 8am-11pm</p>
+                    <p class="card-description">Instant confirmation available</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3 class="card-title">Corporate & Events</h3>
+                    <p class="card-description"><strong>Sarah Johnson</strong> - Corporate Specialist</p>
+                    <p class="card-description"><strong>Email:</strong> corporate@adventurequest.com</p>
+                    <p class="card-description"><strong>Phone:</strong> +1 (555) 789-TEAM</p>
+                    <p class="card-description">Specialized team building solutions</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤝</div>
+                    <h3 class="card-title">Franchise Opportunities</h3>
+                    <p class="card-description"><strong>Michael Chen</strong> - Franchise Director</p>
+                    <p class="card-description"><strong>Email:</strong> franchise@adventurequest.com</p>
+                    <p class="card-description"><strong>Phone:</strong> +1 (555) 321-GROW</p>
+                    <p class="card-description">Investment range: $150k-$300k</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BOOKING PAGE -->
+<div id="booking" class="page">
+    <div class="page-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Book Your Adventure</h1>
+                <p>Select your preferred experience, date, and time</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3 class="card-title">Choose Your Experience</h3>
+                    <div style="text-align: left; margin: 1rem 0;">
+                        <div style="margin: 1rem 0; padding: 1rem; border: 1px solid #ff6b35; border-radius: 8px;">
+                            <h4>🏺 The Lost Temple</h4>
+                            <p>60 min • 2-6 players • $35/person</p>
+                        </div>
+                        <div style="margin: 1rem 0; padding: 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;">
+                            <h4>🚀 Space Station Omega</h4>
+                            <p>60 min • 3-8 players • $40/person</p>
+                        </div>
+                        <div style="margin: 1rem 0; padding: 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;">
+                            <h4>🔍 Detective's Office</h4>
+                            <p>45 min • 2-5 players • $30/person</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Select Details</h3>
+                    <div style="text-align: left; margin: 1rem 0;">
+                        <p><strong>Location:</strong> Downtown Central</p>
+                        <p><strong>Date:</strong> March 15, 2024</p>
+                        <p><strong>Time:</strong> 2:30 PM</p>
+                        <p><strong>Players:</strong> 4 people</p>
+                        <p><strong>Group Name:</strong> Team Awesome</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Booking Summary</h3>
+                    <div style="text-align: left; margin: 1rem 0;">
+                        <p><strong>Experience:</strong> The Lost Temple</p>
+                        <p><strong>Date & Time:</strong> Mar 15, 2024 at 2:30 PM</p>
+                        <p><strong>Location:</strong> Downtown Central</p>
+                        <p><strong>Players:</strong> 4 players</p>
+                        <hr style="margin: 1rem 0; border-color: #ff6b35;">
+                        <p style="font-size: 1.2rem;"><strong>Total: $140.00</strong></p>
+                    </div>
+                    <button class="card-btn" style="width: 100%; margin-top: 1rem;">Complete Booking</button>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">💡 Tips for Success</h3>
+                    <div style="text-align: left;">
+                        <p>• Arrive 15 minutes early</p>
+                        <p>• Communicate with your team</p>
+                        <p>• Search everywhere carefully</p>
+                        <p>• Don't be afraid to ask for hints</p>
+                        <p>• Work together on puzzles</p>
+                        <p>• Have fun and stay positive!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Page switching functionality
+    function showPage(pageId) {
+        // Hide all pages
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+
+        // Show selected page
+        const targetPage = document.getElementById(pageId);
+        if (targetPage) {
+            targetPage.classList.add('active');
+        }
+
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Make sure home page
