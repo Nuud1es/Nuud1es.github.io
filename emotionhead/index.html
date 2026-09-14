@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emotion Engine — Sim Viewer</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #14161a; overflow: hidden; font-family: -apple-system, sans-serif; }
+  #hud { position: fixed; top: 12px; left: 12px; color: #cfd3da; font-size: 13px; line-height: 1.6; background: rgba(20,22,26,0.7); padding: 10px 14px; border-radius: 8px; z-index: 10; }
+  #hud b { color: #fff; }
+  #status { position: fixed; top: 12px; right: 12px; font-size: 12px; padding: 6px 10px; border-radius: 6px; z-index: 10; }
+  .connected { background: #1e3a2a; color: #6fdb9a; }
+  .disconnected { background: #3a1e1e; color: #db6f6f; }
+  .demo { background: #33301a; color: #e0c869; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="hud">
+  emotion: <b id="hud-emotion">–</b> (intensity <b id="hud-intensity">–</b>)<br>
+  ear L/R: <b id="hud-ears">–</b><br>
+  tail: <b id="hud-tail">–</b>&deg;<br>
+  camera: <b id="hud-camera">–</b>
+</div>
+<div id="status" class="disconnected">connecting…</div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from "three";
+
+// ---------------------------------------------------------------------
+// Scene setup
+// ---------------------------------------------------------------------
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x14161a);
+
+const camera3d = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+camera3d.position.set(0, 0.15, 0.55);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+document.body.appendChild(renderer.domElement);
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x222233, 1.1));
+const key = new THREE.DirectionalLight(0xffffff, 0.8);
+key.position.set(1, 1.5, 1);
+scene.add(key);
+
+// ---------------------------------------------------------------------
+// Procedural head: box head, two ear paddles, pop-up camera stalk,
+// segmented tail (chain of small cylinders simulating passive flex),
+// simple eye placeholders that recolor with emotion.
+// ---------------------------------------------------------------------
+const headGroup = new THREE.Group();
+scene.add(headGroup);
+
+const headMat = new THREE.MeshStandardMaterial({ color: 0x2b2f38, roughness: 0.55 });
+const head = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.20, 0.18), headMat);
+headGroup.add(head);
+
+const eyeMat = new THREE.MeshStandardMaterial({ color: 0x66ccff, emissive: 0x224466, roughness: 0.3 });
+const eyeGeo = new THREE.CircleGeometry(0.025, 24);
+const eyeL = new THREE.Mesh(eyeGeo, eyeMat.clone());
+const eyeR = new THREE.Mesh(eyeGeo, eyeMat.clone());
+eyeL.position.set(-0.05, 0.02, 0.091);
+eyeR.position.set(0.05, 0.02, 0.091);
+headGroup.add(eyeL, eyeR);
+
+// Ears: pivot groups so rotation reads as "servo angle"
+const earMat = new THREE.MeshStandardMaterial({ color: 0x3a4050, roughness: 0.6 });
+function makeEar() {
+  const pivot = new THREE.Group();
+  const paddle = new THREE.Mesh(new THREE.ConeGeometry(0.035, 0.11, 4), earMat);
+  paddle.rotation.z = Math.PI; // point outward/up
+  paddle.position.y = 0.05;
+  pivot.add(paddle);
+  return pivot;
+}
+const earL = makeEar();
+const earR = makeEar();
+earL.position.set(-0.12, 0.09, 0);
+earR.position.set(0.12, 0.09, 0);
+headGroup.add(earL, earR);
+
+// Camera stalk: rises out of the top when "deployed"
+const camMat = new THREE.MeshStandardMaterial({ color: 0x505868, roughness: 0.4, metalness: 0.3 });
+const camStalk = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.08, 12), camMat);
+const camLens = new THREE.Mesh(new THREE.SphereGeometry(0.018, 16, 16), new THREE.MeshStandardMaterial({ color: 0x111318 }));
+camLens.position.y = 0.045;
+camStalk.add(camLens);
+camStalk.position.set(0, 0.10, -0.03);
+camStalk.scale.y = 0.001; // starts retracted
+headGroup.add(camStalk);
+
+// Tail: chain of segments, each a small cylinder, rotated cumulatively so
+// the whole thing reads as a flexible whip rather than a rigid rod.
+const tailMat = new THREE.MeshStandardMaterial({ color: 0x3a4050, roughness: 0.6 });
+const TAIL_SEGMENTS = 6;
+const tailRoot = new THREE.Group();
+tailRoot.position.set(0, -0.02, -0.09);
+headGroup.add(tailRoot);
+let tailParent = tailRoot;
+const tailSegGroups = [];
+for (let i = 0; i < TAIL_SEGMENTS; i++) {
+  const segGroup = new THREE.Group();
+  const len = 0.035;
+  const seg = new THREE.Mesh(new THREE.CylinderGeometry(0.012 * (1 - i / TAIL_SEGMENTS * 0.6), 0.012 * (1 - (i + 1) / TAIL_SEGMENTS * 0.6), len, 10), tailMat);
+  seg.position.y = -len / 2;
+  seg.rotation.x = Math.PI / 2; // lay along -Z initially
+  segGroup.add(seg);
+  segGroup.position.z = i === 0 ? 0 : -0.035;
+  tailParent.add(segGroup);
+  tailSegGroups.push(segGroup);
+  tailParent = segGroup;
+}
+
+// ---------------------------------------------------------------------
+// Emotion -> eye color (cosmetic, just so the preview reads expressively)
+// ---------------------------------------------------------------------
+const EMOTION_COLORS = {
+  neutral: 0x66ccff, joy: 0xffd23f, curious: 0x8fe388, surprised: 0xffffff,
+  sad: 0x5577aa, angry: 0xff4444, sleepy: 0x445566, love: 0xff6699,
+  confused: 0xbb88ff, fear: 0xcccccc,
+};
+
+// ---------------------------------------------------------------------
+// State applied from either a live WebSocket (sim_daemon.py) or the
+// in-browser demo loop below.
+// ---------------------------------------------------------------------
+let target = { ear_l: 90, ear_r: 90, tail_angle: 90, camera_deployed: false, emotion: "neutral" };
+
+function applyState(s) {
+  target = s;
+  document.getElementById("hud-emotion").textContent = s.emotion;
+  document.getElementById("hud-intensity").textContent = s.intensity?.toFixed(2) ?? "–";
+  document.getElementById("hud-ears").textContent = `${s.ear_l}° / ${s.ear_r}°`;
+  document.getElementById("hud-tail").textContent = s.tail_angle;
+  document.getElementById("hud-camera").textContent = s.camera_deployed ? "deployed" : "stowed";
+
+  const color = EMOTION_COLORS[s.emotion] ?? 0x66ccff;
+  eyeL.material.color.setHex(color);
+  eyeR.material.color.setHex(color);
+  eyeL.material.emissive.setHex(color).multiplyScalar(0.3);
+  eyeR.material.emissive.setHex(color).multiplyScalar(0.3);
+}
+
+// ---------------------------------------------------------------------
+// In-browser demo mode — a JS port of tail_motion.py's emotion/tail
+// tables so the page animates on its own with no backend at all. This
+// is what runs when the page is hosted statically (GitHub Pages) or
+// whenever no sim_daemon.py is reachable.
+// ---------------------------------------------------------------------
+const DEMO_EAR_TABLE = {
+  neutral: [90, 90], joy: [60, 60], curious: [70, 110],
+  surprised: [45, 45], sad: [120, 120], angry: [100, 80],
+  sleepy: [130, 130], love: [65, 65], confused: [80, 100],
+  fear: [135, 135],
+};
+const DEMO_TAIL_TABLE = {
+  neutral:   { amplitude: 8,  frequency: 0.3, pattern: "sine",        bias: 0   },
+  joy:       { amplitude: 55, frequency: 1.8, pattern: "sine",        bias: 10  },
+  curious:   { amplitude: 25, frequency: 0.6, pattern: "curious_arc", bias: 5   },
+  surprised: { amplitude: 45, frequency: 0.0, pattern: "tuck_hold",   bias: 25  },
+  sad:       { amplitude: 10, frequency: 0.2, pattern: "slow_droop",  bias: -20 },
+  angry:     { amplitude: 30, frequency: 2.2, pattern: "tremble",     bias: 0   },
+  sleepy:    { amplitude: 5,  frequency: 0.1, pattern: "sine",        bias: -10 },
+  love:      { amplitude: 40, frequency: 1.2, pattern: "sine",        bias: 15  },
+  confused:  { amplitude: 20, frequency: 0.5, pattern: "tremble",     bias: 0   },
+  fear:      { amplitude: 5,  frequency: 0.0, pattern: "tuck_hold",   bias: -30 },
+};
+const DEMO_ORDER = ["neutral", "joy", "curious", "surprised", "sad", "angry", "sleepy", "love", "confused", "fear"];
+const DEMO_HOLD_S = 4.5;
+
+const DEMO_PATTERN_FNS = {
+  sine: (t, f) => (f <= 0 ? 0 : Math.sin(2 * Math.PI * f * t)),
+  tremble: (t, f) => {
+    if (f <= 0) return 0;
+    const base = Math.sin(2 * Math.PI * f * t);
+    const jitter = 0.3 * Math.sin(2 * Math.PI * f * 3.7 * t);
+    return Math.max(-1, Math.min(1, base + jitter));
+  },
+  tuck_hold: () => 0,
+  slow_droop: (t, f) => 0.05 * Math.sin(2 * Math.PI * Math.max(f, 0.05) * t),
+  curious_arc: (t, f) => {
+    if (f <= 0) return 0;
+    const period = 1 / f;
+    const phase = (t % period) / period;
+    if (phase < 0.25) return phase / 0.25;
+    if (phase < 0.35) return 1;
+    return 1 - (phase - 0.35) / 0.65;
+  },
+};
+
+let demoActive = false, demoIdx = 0, demoEmotionStart = 0, demoRAF = null;
+
+function startDemo() {
+  if (demoActive) return;
+  demoActive = true;
+  demoIdx = 0;
+  demoEmotionStart = performance.now();
+  statusEl.textContent = "demo mode (no daemon connected)";
+  statusEl.className = "demo";
+  demoStep();
+}
+
+function stopDemo() {
+  demoActive = false;
+  if (demoRAF) cancelAnimationFrame(demoRAF);
+  demoRAF = null;
+}
+
+function demoStep() {
+  if (!demoActive) return;
+  let elapsed = (performance.now() - demoEmotionStart) / 1000;
+  if (elapsed > DEMO_HOLD_S) {
+    demoIdx = (demoIdx + 1) % DEMO_ORDER.length;
+    demoEmotionStart = performance.now();
+    elapsed = 0;
+  }
+  const emotion = DEMO_ORDER[demoIdx];
+  const [earL, earR] = DEMO_EAR_TABLE[emotion];
+  const tp = DEMO_TAIL_TABLE[emotion];
+  const fn = DEMO_PATTERN_FNS[tp.pattern];
+  const intensity = 0.85;
+  let tailAngle = 90 + tp.bias * intensity + tp.amplitude * intensity * fn(elapsed, tp.frequency);
+  tailAngle = Math.max(30, Math.min(150, tailAngle));
+
+  applyState({
+    emotion,
+    intensity,
+    ear_l: earL,
+    ear_r: earR,
+    tail_angle: Math.round(tailAngle * 10) / 10,
+    camera_deployed: emotion === "curious" || emotion === "surprised" || emotion === "love",
+  });
+
+  demoRAF = requestAnimationFrame(demoStep);
+}
+
+// ---------------------------------------------------------------------
+// WebSocket connection to sim_daemon.py, with automatic fallback to the
+// in-browser demo loop when no daemon is reachable (e.g. this page is
+// being viewed from GitHub Pages rather than run alongside the sim).
+// ---------------------------------------------------------------------
+const statusEl = document.getElementById("status");
+const isLocal = location.hostname === "" || location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+function connect() {
+  let settled = false;
+  let ws;
+  try {
+    ws = new WebSocket(`ws://${location.hostname || "localhost"}:8300/ws`);
+  } catch (e) {
+    startDemo();
+    return;
+  }
+  const fallback = setTimeout(() => { if (!settled) startDemo(); }, 1200);
+  ws.onopen = () => {
+    settled = true;
+    clearTimeout(fallback);
+    stopDemo();
+    statusEl.textContent = "connected";
+    statusEl.className = "connected";
+  };
+  ws.onclose = () => {
+    if (settled) {
+      statusEl.textContent = isLocal ? "disconnected — retrying…" : "disconnected";
+      statusEl.className = "disconnected";
+    }
+    startDemo();
+    if (isLocal) setTimeout(connect, 1500);
+  };
+  ws.onerror = () => ws.close();
+  ws.onmessage = (ev) => { stopDemo(); applyState(JSON.parse(ev.data)); };
+}
+
+if (isLocal) {
+  connect(); // real sim_daemon.py if running alongside the page, else demo
+} else {
+  startDemo(); // hosted (e.g. GitHub Pages) — no daemon to reach, run the demo loop
+}
+
+// ---------------------------------------------------------------------
+// Render loop — smoothly interpolate visuals toward the latest target
+// (the daemon already eases servo motion; this is just render-side lerp
+// so the 3D update rate doesn't look stepped if the WS tick is chunky)
+// ---------------------------------------------------------------------
+let cur = { ear_l: 90, ear_r: 90, tail_angle: 90, camDeploy: 0 };
+
+function deg2rad(d) { return (d * Math.PI) / 180; }
+
+function animate() {
+  requestAnimationFrame(animate);
+  const lerp = 0.25;
+  cur.ear_l += (target.ear_l - cur.ear_l) * lerp;
+  cur.ear_r += (target.ear_r - cur.ear_r) * lerp;
+  cur.tail_angle += (target.tail_angle - cur.tail_angle) * lerp;
+  const camGoal = target.camera_deployed ? 1 : 0.001;
+  cur.camDeploy += (camGoal - cur.camDeploy) * lerp;
+
+  // Ears: map servo angle (30-150, 90=neutral) to a swing around the pivot
+  earL.rotation.z = deg2rad(cur.ear_l - 90) * 0.9;
+  earR.rotation.z = -deg2rad(cur.ear_r - 90) * 0.9;
+
+  // Camera stalk: scale up as it deploys
+  camStalk.scale.y = Math.max(0.001, cur.camDeploy);
+
+  // Tail: distribute the base-servo angle across the chain with
+  // decreasing influence per segment (a cheap whip/lag approximation —
+  // segment 0 reacts most, later segments lag and damp the swing).
+  const baseSwing = deg2rad(cur.tail_angle - 90);
+  tailSegGroups.forEach((seg, i) => {
+    const falloff = 1 - i / (TAIL_SEGMENTS * 1.4);
+    seg.rotation.x = baseSwing * falloff;
+  });
+
+  renderer.render(scene, camera3d);
+}
+animate();
+
+window.addEventListener("resize", () => {
+  camera3d.aspect = window.innerWidth / window.innerHeight;
+  camera3d.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Simple orbit-ish drag to look around, no extra library needed
+let dragging = false, lastX = 0, lastY = 0, rotY = 0, rotX = -0.1;
+renderer.domElement.addEventListener("pointerdown", (e) => { dragging = true; lastX = e.clientX; lastY = e.clientY; });
+window.addEventListener("pointerup", () => dragging = false);
+window.addEventListener("pointermove", (e) => {
+  if (!dragging) return;
+  rotY += (e.clientX - lastX) * 0.005;
+  rotX += (e.clientY - lastY) * 0.005;
+  rotX = Math.max(-0.6, Math.min(0.6, rotX));
+  lastX = e.clientX; lastY = e.clientY;
+  headGroup.rotation.y = rotY;
+  headGroup.rotation.x = rotX;
+});
+</script>
+</body>
+</html>
