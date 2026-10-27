@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>To-do admin - Joe Rudling</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="../todo.css">
+  <link rel="shortcut icon" href="../../logo.png" type="image/x-icon">
+</head>
+<body>
+<div class="wrap">
+  <a href="../">&larr; Public list</a>
+  <h1>To-do admin</h1>
+
+  <div id="login">
+    <form id="login-form" class="card">
+      <label>Email <input type="email" name="email" required></label>
+      <div class="actions"><button type="submit">Send sign-in link</button></div>
+      <p class="msg" id="login-msg"></p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <div class="row">
+      <p class="sub" id="who"></p>
+      <button class="secondary" id="logout">Sign out</button>
+    </div>
+
+    <h2>Add task</h2>
+    <form id="add" class="card">
+      <label>Title <input name="title" maxlength="120" required></label>
+      <label>Details <textarea name="description" maxlength="1000"></textarea></label>
+      <div class="grid2">
+        <label>Status <select name="status" class="status-select"></select></label>
+        <label>ETA <input type="date" name="eta"></label>
+      </div>
+      <label>Progress notes <textarea name="notes" maxlength="2000"></textarea></label>
+      <div class="actions"><button type="submit">Add task</button></div>
+    </form>
+
+    <h2>Tasks</h2>
+    <div class="filters" id="filters"></div>
+    <p class="msg" id="msg"></p>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="../config.js"></script>
+<script src="../todo.js"></script>
+<script>
+const ADMIN_EMAIL = "rudlingjoe@gmail.com";
+const db = getClient();
+const $ = id => document.getElementById(id);
+let tasks = [];
+let filter = "review";
+
+const FILTERS = { review: "To review", open: "Open", all: "All" };
+
+function fillStatusSelect(sel, current) {
+  sel.replaceChildren(...Object.entries(STATUSES).map(([k, v]) => {
+    const o = el("option", { value: k }, v);
+    if (k === current) o.selected = true;
+    return o;
+  }));
+}
+
+function showMsg(text, ok) { $("msg").textContent = text; $("msg").className = "msg " + (ok ? "ok" : "err"); }
+
+async function init() {
+  if (!db) { $("login-msg").textContent = "Backend not configured yet (see todo/config.js)."; $("login-msg").className = "msg err"; return; }
+  const { data: { session } } = await db.auth.getSession();
+  setSession(session);
+  db.auth.onAuthStateChange((_e, s) => setSession(s));
+}
+
+function setSession(session) {
+  const ok = session && session.user.email === ADMIN_EMAIL;
+  $("login").hidden = !!ok;
+  $("app").hidden = !ok;
+  if (session && !ok) { $("login-msg").textContent = "That account isn't the admin."; $("login-msg").className = "msg err"; }
+  if (ok) { $("who").textContent = session.user.email; load(); }
+}
+
+$("login-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = e.target.email.value.trim();
+  const { error } = await db.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: location.href.split("#")[0], shouldCreateUser: false }
+  });
+  $("login-msg").textContent = error ? "Couldn't send the link: " + error.message : "Check your email for the sign-in link.";
+  $("login-msg").className = "msg " + (error ? "err" : "ok");
+});
+$("logout").addEventListener("click", () => db.auth.signOut());
+
+async function load() {
+  const { data, error } = await db.from("tasks").select("*").order("created_at", { ascending: false });
+  if (error) { showMsg("Couldn't load tasks: " + error.message); return; }
+  tasks = data;
+  render();
+}
+
+function renderFilters() {
+  $("filters").replaceChildren(...Object.entries(FILTERS).map(([key, label]) =>
+    el("button", { class: "secondary" + (key === filter ? " active" : ""),
+      onclick: () => { filter = key; renderFilters(); render(); } }, label)));
+}
+
+function editor(t) {
+  const status = el("select");
+  fillStatusSelect(status, t.status);
+  const eta = el("input", { type: "date", value: t.eta || "" });
+  const notes = el("textarea", { maxlength: "2000" }, t.notes || "");
+  const title = el("input", { maxlength: "120", value: t.title });
+  const save = el("button", {}, "Save");
+
+  save.addEventListener("click", async () => {
+    save.disabled = true;
+    const { error } = await db.from("tasks").update({
+      title: title.value.trim() || t.title,
+      status: status.value,
+      eta: eta.value || null,
+      notes: notes.value.trim() || null
+    }).eq("id", t.id);
+    save.disabled = false;
+    if (error) return showMsg("Save failed: " + error.message);
+    showMsg("Saved.", true);
+    load();
+  });
+
+  const del = el("button", { class: "danger" }, "Delete");
+  del.addEventListener("click", async () => {
+    if (!confirm(`Delete "${t.title}"?`)) return;
+    const { error } = await db.from("tasks").delete().eq("id", t.id);
+    if (error) return showMsg("Delete failed: " + error.message);
+    load();
+  });
+
+  const card = el("div", { class: "card" },
+    el("div", { class: "row" }, el("h3", {}, "Task"), statusBadge(t.status)),
+    el("label", {}, "Title", title));
+  if (t.description) card.append(el("p", {}, t.description));
+  card.append(
+    el("div", { class: "meta" }, el("span", {}, `Added ${formatDate(t.created_at)}${t.submitter ? " by " + t.submitter : ""}`)),
+    el("div", { class: "grid2", style: "margin-top:10px" }, el("label", {}, "Status", status), el("label", {}, "ETA", eta)),
+    el("label", { style: "margin-top:10px" }, "Progress notes", notes),
+    el("div", { class: "actions", style: "margin-top:10px" }, save, del));
+  return card;
+}
+
+function render() {
+  renderFilters();
+  const shown = tasks.filter(t =>
+    filter === "all" ? true :
+    filter === "review" ? t.status === "suggested" :
+    !["done", "declined"].includes(t.status));
+  $("list").replaceChildren(...(shown.length ? shown.map(editor) : [el("p", { class: "sub" }, "Nothing here.")]));
+}
+
+fillStatusSelect(document.querySelector(".status-select"), "accepted");
+$("add").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target;
+  // Admin inserts go through the public insert policy, so create as suggested then promote.
+  const { data, error } = await db.from("tasks").insert({
+    title: f.title.value.trim(),
+    description: f.description.value.trim() || null
+  }).select().single();
+  if (error) return showMsg("Add failed: " + error.message);
+  const { error: err2 } = await db.from("tasks").update({
+    status: f.status.value, eta: f.eta.value || null, notes: f.notes.value.trim() || null
+  }).eq("id", data.id);
+  if (err2) return showMsg("Added, but couldn't set status: " + err2.message);
+  f.reset();
+  fillStatusSelect(document.querySelector(".status-select"), "accepted");
+  showMsg("Task added.", true);
+  load();
+});
+
+init();
+</script>
+</body>
+</html>

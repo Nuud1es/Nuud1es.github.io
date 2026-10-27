@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sim-to-Real Robotics Toolchain - Joe Rudling</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+</head>
+<body>
+    <main class="cs-page">
+        <a href="../index.html" class="cs-back-link"><ion-icon name="arrow-back-outline"></ion-icon> Back to joerudling.dev</a>
+
+        <div class="cs-draft-badge"><ion-icon name="alert-circle-outline"></ion-icon> Draft — one detail still needs confirming</div>
+
+        <header class="cs-header">
+            <p class="cs-eyebrow">Skills &amp; Toolchain</p>
+            <h1 class="cs-title">Sim-to-Real Robotics Toolchain</h1>
+            <p class="cs-meta">Evidence of full-pipeline capability, not just a bare skills list</p>
+        </header>
+
+        <section class="cs-section">
+            <h2>Simulation &amp; Planning</h2>
+            <ul>
+                <li>Isaac Sim — robot modeling, URDF authoring (including rigging conversion from Blender for the Aveline project), physics simulation</li>
+                <li>ROS2 — node architecture, topic/service design</li>
+                <li>Nav2 — path planning and autonomous navigation stacks</li>
+                <li>SLAM Toolbox — mapping and localization</li>
+            </ul>
+        </section>
+
+        <section class="cs-section">
+            <h2>Hardware Reality</h2>
+            <ul>
+                <li>Diagnosed and resolved an Isaac Sim 5.1.0 driver regression on an RTX 2080 workstation, including configuring WebRTC streaming over Tailscale for remote sim access</li>
+            </ul>
+            <p class="cs-todo">TODO: any other hardware/driver troubleshooting worth naming — GPU comparisons for LLM inference could also live here, tying robotics and AI infra together</p>
+        </section>
+
+        <blockquote class="cs-quote">
+            "I don't just run simulations — I've had to fix the environments that run them: driver regressions, remote streaming setups, and the gap between what works in sim and what survives contact with real sensors and real floors."
+        </blockquote>
+
+        <a class="cs-crosslink" href="advantech-amr.html">
+            <div class="cs-crosslink-inner">
+                <span>See this toolchain applied — the Advantech AMR case study</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+        </a>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

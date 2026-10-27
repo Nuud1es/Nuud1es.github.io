@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do - Joe Rudling</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="todo.css">
+  <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+</head>
+<body>
+<div class="wrap">
+  <a href="../index.html">&larr; Back to joerudling.dev</a>
+  <h1>What I'm working on</h1>
+  <p class="sub">A live list of tasks, with progress notes and estimated finish dates. Got something that needs doing? Suggest it below.</p>
+
+  <h2>Suggest a task</h2>
+  <form id="suggest" class="card">
+    <label>Title <input name="title" maxlength="120" required></label>
+    <label>Details (optional) <textarea name="description" maxlength="1000"></textarea></label>
+    <label>Your name (optional) <input name="submitter" maxlength="60"></label>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="actions"><button type="submit">Submit suggestion</button></div>
+    <p class="msg" id="suggest-msg"></p>
+  </form>
+
+  <h2>Tasks</h2>
+  <div class="filters" id="filters"></div>
+  <div id="list"><p class="sub">Loading…</p></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="todo.js"></script>
+<script>
+const db = getClient();
+const listEl = document.getElementById("list");
+const msg = document.getElementById("suggest-msg");
+let tasks = [];
+let filter = "open";
+
+const FILTERS = { open: "Open", all: "All", done: "Done" };
+const isOpen = t => !["done", "declined"].includes(t.status);
+
+function renderFilters() {
+  const box = document.getElementById("filters");
+  box.replaceChildren(...Object.entries(FILTERS).map(([key, label]) =>
+    el("button", { class: "secondary" + (key === filter ? " active" : ""),
+      onclick: () => { filter = key; renderFilters(); render(); } }, label)));
+}
+
+function render() {
+  const shown = tasks.filter(t => filter === "all" || (filter === "open" ? isOpen(t) : t.status === "done"));
+  if (!shown.length) { listEl.replaceChildren(el("p", { class: "sub" }, "Nothing here yet.")); return; }
+  listEl.replaceChildren(...shown.map(t => {
+    const card = el("div", { class: "card" },
+      el("div", { class: "row" }, el("h3", {}, t.title), statusBadge(t.status)));
+    if (t.description) card.append(el("p", {}, t.description));
+    if (t.notes) card.append(el("p", { class: "notes" }, t.notes));
+    const meta = el("div", { class: "meta" });
+    const eta = etaLabel(t);
+    if (eta) meta.append(eta);
+    meta.append(el("span", {}, `Added ${formatDate(t.created_at)}${t.submitter ? " by " + t.submitter : ""}`));
+    card.append(meta);
+    return card;
+  }));
+}
+
+async function load() {
+  if (!db) { listEl.replaceChildren(el("p", { class: "msg err" }, "Backend not configured yet (see todo/config.js).")); return; }
+  const { data, error } = await db.from("tasks").select("*").order("created_at", { ascending: false });
+  if (error) { listEl.replaceChildren(el("p", { class: "msg err" }, "Couldn't load tasks.")); return; }
+  // Active work first, then newest.
+  const rank = { in_progress: 0, blocked: 1, accepted: 2, suggested: 3, done: 4, declined: 5 };
+  tasks = data.sort((a, b) => rank[a.status] - rank[b.status]);
+  render();
+}
+
+document.getElementById("suggest").addEventListener("submit", async e => {
+  e.preventDefault();
+  const f = e.target;
+  msg.className = "msg";
+  if (f.website.value) return; // honeypot
+  if (!db) { msg.textContent = "Backend not configured yet."; msg.className = "msg err"; return; }
+  const btn = f.querySelector("button");
+  btn.disabled = true;
+  const { error } = await db.from("tasks").insert({
+    title: f.title.value.trim(),
+    description: f.description.value.trim() || null,
+    submitter: f.submitter.value.trim() || null
+  });
+  btn.disabled = false;
+  if (error) { msg.textContent = "Something went wrong, please try again."; msg.className = "msg err"; return; }
+  f.reset();
+  msg.textContent = "Thanks! Your suggestion is on the list.";
+  msg.className = "msg ok";
+  load();
+});
+
+renderFilters();
+load();
+</script>
+</body>
+</html>

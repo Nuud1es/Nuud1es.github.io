@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advantech AMR Case Study - Joe Rudling</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+</head>
+<body>
+    <main class="cs-page">
+        <a href="../index.html" class="cs-back-link"><ion-icon name="arrow-back-outline"></ion-icon> Back to joerudling.dev</a>
+
+        <div class="cs-draft-badge"><ion-icon name="alert-circle-outline"></ion-icon> Draft — dates, hardware and outcome details still need confirming</div>
+
+        <header class="cs-header">
+            <p class="cs-eyebrow">Case Study — Robotics</p>
+            <h1 class="cs-title">Advantech Robotics Internship — Autonomous Mobile Robot</h1>
+            <p class="cs-meta">Nagoya, 2025</p>
+        </header>
+
+        <div class="cs-banner">
+            <ion-icon name="image-outline"></ion-icon>
+            <span>TODO: photo or short video clip of the AMR at the trade show — this is the strongest social proof for this page, prioritize getting it if it isn't already saved</span>
+        </div>
+
+        <section class="cs-section">
+            <h2>Problem</h2>
+            <p>Advantech needed a working AMR demonstrator capable of autonomous navigation for trade show floors — a platform that could reliably move through unpredictable, crowded environments while showcasing Advantech's edge hardware in a live setting.</p>
+            <p class="cs-todo">TODO: what specific gap this filled — was it a new product line, a hardware showcase, a proof-of-concept for a client?</p>
+        </section>
+
+        <section class="cs-section">
+            <h2>Approach</h2>
+            <ul>
+                <li>Built out the robot's navigation stack using ROS2, Nav2, and SLAM Toolbox for mapping and path planning</li>
+                <li>Iterated through simulation before hardware deployment</li>
+            </ul>
+            <p class="cs-todo">TODO: what hardware base — custom chassis, off-the-shelf base platform, sensor suite (LIDAR, depth camera, etc.)</p>
+            <p class="cs-todo">TODO: what Advantech edge compute hardware was integrated — likely central to why it mattered to them</p>
+            <p class="cs-todo">TODO: confirm whether Isaac Sim was used here specifically, or came later with the Aveline project</p>
+            <p class="cs-todo">TODO: the most valuable part of this case study — a specific technical obstacle solved (sensor calibration, localization drift, network/latency on the show floor). Hiring managers want the debugging story, not just the stack list.</p>
+        </section>
+
+        <section class="cs-section">
+            <h2>Outcome</h2>
+            <p>Demonstrated live at [trade show name(s), city, date] running autonomous navigation in front of attendees.</p>
+            <p class="cs-todo">TODO: any measurable result — uptime across the show, number of demo runs, positive client/visitor feedback, whether it led to further work</p>
+
+            <h3>To finish this page</h3>
+            <p>A simple stack diagram (sensors → SLAM/localization → Nav2 planner → motor control) plus a sentence or two on what would be done differently now, with current Isaac Sim experience — shows growth rather than just a static achievement.</p>
+        </section>
+
+        <a class="cs-crosslink" href="robotics-toolchain.html">
+            <div class="cs-crosslink-inner">
+                <span>Read the full sim-to-real robotics toolchain breakdown</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+        </a>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

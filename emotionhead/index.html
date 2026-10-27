@@ -13,6 +13,28 @@
   .disconnected { background: #3a1e1e; color: #db6f6f; }
   .demo { background: #33301a; color: #e0c869; }
   canvas { display: block; }
+
+  #tts-panel {
+    position: fixed; top: 54px; right: 12px; width: 300px; max-height: calc(100vh - 78px);
+    overflow-y: auto; background: rgba(20,22,26,0.85); color: #cfd3da; font-size: 12.5px;
+    line-height: 1.55; border-radius: 10px; padding: 12px 14px; z-index: 10;
+  }
+  .tts-header { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: #8f95a3; margin-bottom: 8px; }
+  .tts-example-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+  .tts-example-btn { background: #20242c; border: 1px solid #333947; color: #cfd3da; font-size: 12px; padding: 5px 9px; border-radius: 6px; cursor: pointer; }
+  .tts-example-btn:hover { background: #282d38; }
+  .tts-example-btn.playing { border-color: #6fdb9a; color: #6fdb9a; }
+  .tts-readout { margin: 0; min-height: 4.5em; }
+  .tts-readout .seg { color: #5c6270; transition: color .15s; }
+  .tts-readout .seg.active { color: #fff; }
+  .tts-readout .seg-tag {
+    display: inline-block; font-size: 9px; letter-spacing: .04em; text-transform: uppercase;
+    padding: 1px 5px; margin-left: 3px; border-radius: 4px; background: rgba(255,255,255,0.07); color: #8f95a3;
+    vertical-align: 1px;
+  }
+  .tts-readout .seg.active .seg-tag { background: #e0c869; color: #14161a; }
+  .tts-stop-btn { margin-top: 8px; background: #3a1e1e; border: 1px solid #5a2e2e; color: #db6f6f; font-size: 12px; padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+  .tts-stop-btn:hover { background: #452424; }
 </style>
 </head>
 <body>
@@ -23,6 +45,13 @@
   camera: <b id="hud-camera">–</b>
 </div>
 <div id="status" class="disconnected">connecting…</div>
+
+<div id="tts-panel">
+  <div class="tts-header">Mid-sentence emotion — TTS examples</div>
+  <div class="tts-example-list" id="tts-example-list"></div>
+  <p class="tts-readout" id="tts-readout">Pick an example — the tags show where the emotion changes mid-sentence.</p>
+  <button class="tts-stop-btn" id="tts-stop-btn" hidden>Stop</button>
+</div>
 
 <script type="importmap">
 { "imports": { "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.js" } }
@@ -194,16 +223,24 @@ const DEMO_PATTERN_FNS = {
   },
 };
 
-let demoActive = false, demoIdx = 0, demoEmotionStart = 0, demoRAF = null;
+let demoActive = false, demoMode = "auto", demoIdx = 0, demoEmotionStart = 0, demoRAF = null;
+let currentDemoEmotion = "neutral";
+
+function setDemoEmotion(emotion) {
+  currentDemoEmotion = emotion;
+  demoEmotionStart = performance.now();
+}
 
 function startDemo() {
-  if (demoActive) return;
+  if (scriptedRunning) return; // don't let ambient reconnect polling interrupt a playing example
+  if (demoActive && demoMode === "auto") return;
   demoActive = true;
+  demoMode = "auto";
   demoIdx = 0;
-  demoEmotionStart = performance.now();
+  setDemoEmotion(DEMO_ORDER[0]);
   statusEl.textContent = "demo mode (no daemon connected)";
   statusEl.className = "demo";
-  demoStep();
+  if (!demoRAF) demoStep();
 }
 
 function stopDemo() {
@@ -212,15 +249,18 @@ function stopDemo() {
   demoRAF = null;
 }
 
+// Drives the 3D pose from whatever emotion is currently active — either
+// the auto-cycling showcase loop, or a scripted TTS example (see below)
+// stepping through setDemoEmotion() at its own pace.
 function demoStep() {
-  if (!demoActive) return;
+  if (!demoActive) { demoRAF = null; return; }
   let elapsed = (performance.now() - demoEmotionStart) / 1000;
-  if (elapsed > DEMO_HOLD_S) {
+  if (demoMode === "auto" && elapsed > DEMO_HOLD_S) {
     demoIdx = (demoIdx + 1) % DEMO_ORDER.length;
-    demoEmotionStart = performance.now();
+    setDemoEmotion(DEMO_ORDER[demoIdx]);
     elapsed = 0;
   }
-  const emotion = DEMO_ORDER[demoIdx];
+  const emotion = currentDemoEmotion;
   const [earL, earR] = DEMO_EAR_TABLE[emotion];
   const tp = DEMO_TAIL_TABLE[emotion];
   const fn = DEMO_PATTERN_FNS[tp.pattern];
@@ -239,6 +279,127 @@ function demoStep() {
 
   demoRAF = requestAnimationFrame(demoStep);
 }
+
+// ---------------------------------------------------------------------
+// TTS "emote mid-sentence" examples — short scripts made of segments,
+// each tagged with the emotion that should be active while it's being
+// "spoken". Playback steps through them on a word-count timer (so it
+// works even without speech support) and, best-effort, actually speaks
+// the line via the Web Speech API — demonstrating that the emotion is
+// meant to shift partway through a single utterance, not once per line.
+// ---------------------------------------------------------------------
+const TTS_EXAMPLES = [
+  {
+    label: "Exciting find",
+    segments: [
+      { text: "I found something really exciting today!", emotion: "joy" },
+      { text: " Wait, what is that thing over there?", emotion: "curious" },
+      { text: " Oh! I did not expect that at all!", emotion: "surprised" },
+    ],
+  },
+  {
+    label: "Empty house",
+    segments: [
+      { text: "I looked around and no one was home.", emotion: "sad" },
+      { text: " But then you walked in the door, and everything felt okay again.", emotion: "love" },
+    ],
+  },
+  {
+    label: "Something's wrong",
+    segments: [
+      { text: "Wait, why is the door open?", emotion: "confused" },
+      { text: " Did something just move in the dark?", emotion: "fear" },
+      { text: " Whoever is doing this needs to stop right now!", emotion: "angry" },
+    ],
+  },
+  {
+    label: "Long day",
+    segments: [
+      { text: "It's been such a long day, I can barely keep my eyes open.", emotion: "sleepy" },
+      { text: " Wait... is that a treat?!", emotion: "surprised" },
+      { text: " Best day ever!", emotion: "joy" },
+    ],
+  },
+];
+
+let scriptedTimers = [];
+let scriptedRunning = false;
+
+function wordCount(s) {
+  return s.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function stopScripted() {
+  scriptedRunning = false;
+  scriptedTimers.forEach(clearTimeout);
+  scriptedTimers = [];
+  if ("speechSynthesis" in window) speechSynthesis.cancel();
+  document.querySelectorAll(".tts-example-btn.playing").forEach((b) => b.classList.remove("playing"));
+  const stopBtn = document.getElementById("tts-stop-btn");
+  if (stopBtn) stopBtn.hidden = true;
+}
+
+function playTtsExample(idx, btn) {
+  stopScripted();
+  demoActive = true;
+  demoMode = "scripted";
+  scriptedRunning = true;
+  statusEl.textContent = "scripted (TTS example)";
+  statusEl.className = "demo";
+  if (!demoRAF) demoStep();
+
+  const ex = TTS_EXAMPLES[idx];
+  const readout = document.getElementById("tts-readout");
+  readout.innerHTML = ex.segments
+    .map((s, i) => `<span class="seg" data-i="${i}">${s.text}<span class="seg-tag">${s.emotion}</span></span>`)
+    .join("");
+  btn.classList.add("playing");
+  document.getElementById("tts-stop-btn").hidden = false;
+
+  const MS_PER_WORD = 60000 / 165; // ~165 words/min speaking pace
+  let t = 0;
+  ex.segments.forEach((seg, i) => {
+    scriptedTimers.push(
+      setTimeout(() => {
+        if (!scriptedRunning) return;
+        readout.querySelectorAll(".seg").forEach((el) => el.classList.remove("active"));
+        readout.querySelector(`.seg[data-i="${i}"]`).classList.add("active");
+        setDemoEmotion(seg.emotion);
+      }, t)
+    );
+    t += Math.max(600, wordCount(seg.text) * MS_PER_WORD);
+  });
+  scriptedTimers.push(
+    setTimeout(() => {
+      if (!scriptedRunning) return;
+      stopScripted();
+      startDemo();
+    }, t + 500)
+  );
+
+  if ("speechSynthesis" in window) {
+    try {
+      speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(ex.segments.map((s) => s.text).join(""));
+      speechSynthesis.speak(utter);
+    } catch (e) {
+      // Speech is a best-effort bonus — the timed emotion/text sync above doesn't depend on it.
+    }
+  }
+}
+
+const ttsExampleList = document.getElementById("tts-example-list");
+TTS_EXAMPLES.forEach((ex, i) => {
+  const btn = document.createElement("button");
+  btn.className = "tts-example-btn";
+  btn.textContent = ex.label;
+  btn.addEventListener("click", () => playTtsExample(i, btn));
+  ttsExampleList.appendChild(btn);
+});
+document.getElementById("tts-stop-btn").addEventListener("click", () => {
+  stopScripted();
+  startDemo();
+});
 
 // ---------------------------------------------------------------------
 // WebSocket connection to sim_daemon.py, with automatic fallback to the
@@ -311,10 +472,12 @@ function animate() {
   // Tail: distribute the base-servo angle across the chain with
   // decreasing influence per segment (a cheap whip/lag approximation —
   // segment 0 reacts most, later segments lag and damp the swing).
+  // Rotate around Y (not X) so the tail sweeps side-to-side like a wag,
+  // not toward/away from the camera.
   const baseSwing = deg2rad(cur.tail_angle - 90);
   tailSegGroups.forEach((seg, i) => {
     const falloff = 1 - i / (TAIL_SEGMENTS * 1.4);
-    seg.rotation.x = baseSwing * falloff;
+    seg.rotation.y = baseSwing * falloff;
   });
 
   renderer.render(scene, camera3d);

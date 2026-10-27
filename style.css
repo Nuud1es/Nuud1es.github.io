@@ -1474,5 +1474,208 @@ textarea.form-input {
         background: -webkit-linear-gradient(135deg, crimson, teal);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-    } 
+    }
+}
+
+/* BLOG CARD — PLACEHOLDER BANNER (used until a real photo/diagram exists) */
+
+.blog-banner-box.blog-banner-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    padding: 12px;
+    background: var(--eerie-black1);
+    border: 1px dashed var(--jet);
+    color: var(--light-gray70);
+}
+
+    .blog-banner-placeholder ion-icon {
+        font-size: 28px;
+        color: var(--light-gray70);
+    }
+
+    .blog-banner-placeholder span {
+        font-size: var(--fs7);
+        font-weight: var(--fw300);
+    }
+
+.draft-tag {
+    color: var(--bittersweet-shimmer);
+    font-size: var(--fs6);
+    font-weight: var(--fw400);
+}
+
+/* CASE STUDY PAGES (case-studies/*.html) */
+
+.cs-page {
+    max-width: 760px;
+    margin-inline: auto;
+    padding: 30px 16px 90px;
+    color: var(--light-gray);
+}
+
+.cs-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--light-gray70);
+    font-size: var(--fs6);
+    margin-bottom: 20px;
+}
+
+    .cs-back-link:hover { color: var(--orange-yellow-crayola); }
+    .cs-back-link ion-icon { font-size: 16px; }
+
+.cs-draft-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-gradient-yellow2);
+    border: 1px solid var(--jet);
+    color: var(--white2);
+    font-size: var(--fs7);
+    font-weight: var(--fw500);
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+    .cs-draft-badge ion-icon { font-size: 15px; color: var(--bittersweet-shimmer); }
+
+.cs-header { margin-bottom: 25px; }
+
+.cs-eyebrow {
+    color: var(--teal);
+    font-size: var(--fs6);
+    font-weight: var(--fw500);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+}
+
+.cs-title {
+    font-size: var(--fs1);
+    color: var(--white2);
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.cs-meta {
+    color: var(--light-gray70);
+    font-size: var(--fs6);
+    font-weight: var(--fw300);
+}
+
+.cs-banner {
+    width: 100%;
+    min-height: 180px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    padding: 20px;
+    background: var(--eerie-black1);
+    border: 1px dashed var(--jet);
+    color: var(--light-gray70);
+}
+
+    .cs-banner ion-icon { font-size: 34px; color: var(--light-gray70); }
+    .cs-banner span { font-size: var(--fs6); max-width: 480px; }
+
+.cs-section { margin-bottom: 34px; }
+
+    .cs-section h2 {
+        color: var(--white2);
+        font-size: var(--fs2);
+        margin-bottom: 12px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid var(--jet);
+    }
+
+    .cs-section h3 {
+        color: var(--white2);
+        font-size: var(--fs4);
+        margin: 18px 0 8px;
+    }
+
+    .cs-section p {
+        font-weight: var(--fw300);
+        line-height: 1.7;
+        margin-bottom: 12px;
+    }
+
+    .cs-section ul {
+        margin-left: 20px;
+        margin-bottom: 12px;
+    }
+
+        .cs-section ul li {
+            list-style: disc;
+            font-weight: var(--fw300);
+            line-height: 1.7;
+            margin-bottom: 6px;
+        }
+
+.cs-todo {
+    display: block;
+    color: var(--bittersweet-shimmer);
+    background: hsla(0, 43%, 51%, .08);
+    border-left: 3px solid var(--bittersweet-shimmer);
+    font-size: var(--fs7);
+    font-weight: var(--fw400);
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+.cs-quote {
+    font-style: italic;
+    color: var(--white2);
+    font-weight: var(--fw300);
+    line-height: 1.7;
+    border-left: 3px solid var(--teal);
+    padding: 4px 16px;
+    margin: 16px 0;
+}
+
+.cs-crosslink {
+    display: block;
+    background: var(--border-gradient-onyx);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-top: 30px;
+}
+
+    .cs-crosslink::before {
+        content: '';
+    }
+
+    .cs-crosslink-inner {
+        position: relative;
+        background: var(--eerie-black1);
+        border-radius: inherit;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .cs-crosslink-inner span:first-child {
+        color: var(--white2);
+        font-size: var(--fs6);
+    }
+
+    .cs-crosslink-inner ion-icon { color: var(--orange-yellow-crayola); }
+
+@media (min-width: 768px) {
+    .cs-page { padding-top: 50px; }
+    .cs-title { font-size: 30px; }
 }

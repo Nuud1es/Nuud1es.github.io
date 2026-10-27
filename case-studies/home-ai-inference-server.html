@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home AI Inference Server - Joe Rudling</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+</head>
+<body>
+    <main class="cs-page">
+        <a href="../index.html" class="cs-back-link"><ion-icon name="arrow-back-outline"></ion-icon> Back to joerudling.dev</a>
+
+        <div class="cs-draft-badge"><ion-icon name="alert-circle-outline"></ion-icon> Draft — an architecture diagram is still needed</div>
+
+        <header class="cs-header">
+            <p class="cs-eyebrow">Personal Project — AI Infrastructure</p>
+            <h1 class="cs-title">Home AI Inference Server</h1>
+        </header>
+
+        <div class="cs-banner">
+            <ion-icon name="git-network-outline"></ion-icon>
+            <span>TODO: architecture diagram — services boxed, arrows showing data flow. This alone will do more than the text.</span>
+        </div>
+
+        <section class="cs-section">
+            <h2>What it is</h2>
+            <p>A self-hosted inference stack running on a home server (AMD Ryzen 7950X, 128GB RAM, AMD 7900 XTX) on Arch Linux — built to explore local LLM hosting without cloud dependency.</p>
+        </section>
+
+        <section class="cs-section">
+            <h2>Stack</h2>
+            <ul>
+                <li>ROCm for AMD GPU acceleration + Ollama for model serving</li>
+                <li>Docker Compose for service orchestration</li>
+                <li>n8n for workflow automation on top of the models</li>
+                <li>Tailscale for secure remote access</li>
+                <li>Grafana for monitoring</li>
+                <li>Qdrant for vector storage</li>
+                <li>Piper for local TTS</li>
+            </ul>
+        </section>
+
+        <section class="cs-section">
+            <h2>The interesting part</h2>
+            <ul>
+                <li>Explored multi-backend llama.cpp limitations when mixing AMD and NVIDIA hardware — worth a short writeup, since GPU-vendor interoperability in local LLM setups is a real pain point people search for</li>
+                <li>Diagnosed and recovered from an Arch Linux boot failure (stale fstab entry) via live USB chroot — a good "I can operate at the systems level, not just the application level" anecdote</li>
+            </ul>
+        </section>
+
+        <blockquote class="cs-quote">
+            This reflects a broader pattern: building interconnected systems rather than isolated scripts — a thread that runs through this project, the Gressingham automation work, and the NorwichVR infrastructure.
+        </blockquote>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
