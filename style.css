@@ -1697,12 +1697,7 @@ main.cs-page { display: block; max-width: 760px; }
     line-height: 1.5;
 }
 .cs-repo-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
+    display: inline;
     color: var(--orange-yellow-crayola);
-    font-size: var(--fs6);
 }
 .cs-repo-link:hover { text-decoration: underline; }
-.cs-section .cs-note { color: var(--light-gray70); font-size: var(--fs6); font-style: italic; }
