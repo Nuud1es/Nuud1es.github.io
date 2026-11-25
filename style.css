@@ -1701,3 +1701,11 @@ main.cs-page { display: block; max-width: 760px; }
     color: var(--orange-yellow-crayola);
 }
 .cs-repo-link:hover { text-decoration: underline; }
+
+/* Plain white title (no gradient) for a case study */
+h1.cs-title-plain {
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: var(--white2);
+    color: var(--white2);
+}
