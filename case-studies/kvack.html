@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KVACK — AI Document Assistant - Joe Rudling</title>
+    <title>KVACK — an AI assistant for food quality documents - Joe Rudling</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
 </head>
@@ -12,38 +12,71 @@
         <a href="../index.html" class="cs-back-link"><ion-icon name="arrow-back-outline"></ion-icon> Back to joerudling.dev</a>
 
         <header class="cs-header">
-            <p class="cs-eyebrow">Personal Project — GenAI</p>
-            <h1 class="cs-title">KVACK — AI Document Assistant</h1>
+            <p class="cs-eyebrow">Gressingham Foods — GenAI · Nov 2026</p>
+            <h1 class="cs-title">KVACK — an AI assistant for food quality documents</h1>
+            <a class="cs-repo-link" href="https://github.com/Nuud1es/KVACK" target="_blank" rel="noopener"><ion-icon name="logo-github"></ion-icon> github.com/Nuud1es/KVACK</a>
         </header>
 
-        <!-- TODO: swap for a screenshot or GIF of the chat page answering with a citation, and add the public repo link below once it exists -->
-        <div class="cs-banner">
-            <ion-icon name="image-outline"></ion-icon>
-            <span>Screenshot coming soon</span>
-        </div>
-
         <section class="cs-section">
-            <h2>What it does</h2>
-            <p>Food-quality teams spend much of their day on documents: calibration certificates, supplier specifications, certificates of analysis and SOPs. KVACK sorts those documents, answers questions about them with the exact page each answer came from, and pulls out key details such as serial numbers and due dates. When something needs doing, like sending a reminder, it drafts the action and waits for a person to approve it.</p>
+            <p>A food quality team lives in paperwork: product specifications, calibration certificates, lab reports and SOPs. Finding one date or one limit can mean opening a dozen PDFs. KVACK (Knowledge, Verification &amp; Automation Compliance Kit) reads them all, answers questions with the exact page as its source, and drafts reminders that only a person can send.</p>
+            <p>One rule shaped the whole design: <strong>the AI reads and writes language, but code makes the decisions.</strong> In compliance work, a confident wrong answer is worse than no answer.</p>
+            <p class="cs-note">All screenshots use made-up sample documents. The app was renamed from "QA Copilot", which still shows in the header.</p>
         </section>
 
         <section class="cs-section">
-            <h2>How it works</h2>
+            <h2>Ask a question, get the source</h2>
+            <p>Questions are answered from the documents with numbered citations that open the page they came from. If the documents don't cover something, it says so instead of guessing. Due-date questions skip the AI entirely: they're answered straight from the database, listing every matching instrument and naming superseded certificates, so an old certificate can never win.</p>
+            <figure class="cs-figure">
+                <img src="../kvack/ask.jpg" alt="KVACK Ask page answering when two probe certificates are due, with two cited source pages" loading="lazy">
+                <figcaption>A due-date question answered from the certificates table, with each certificate cited.</figcaption>
+            </figure>
+        </section>
+
+        <section class="cs-section">
+            <h2>Checking a lab report against its spec</h2>
+            <p>The model pulls results and limits out of each document, then plain code compares them: it understands values like "&lt;10" and "2.2E+03", picks the spec revision in force on the report date, and marks anything unclear as "review" rather than guessing pass or fail.</p>
+            <figure class="cs-figure">
+                <img src="../kvack/spec-check.jpg" alt="A certificate of analysis checked against revision 2 of its specification, with a failing total viable count" loading="lazy">
+                <figcaption>A report checked against the matching spec revision. One result fails its limit.</figcaption>
+            </figure>
+        </section>
+
+        <section class="cs-section">
+            <h2>Poor scans go to a person</h2>
+            <p>OCR on a bad scan can misread digits, and a model can invent a serial number from garbled text. So every serial and date must actually appear on the page; anything that doesn't, or comes from a poor scan, waits in a review queue. Until someone confirms it, answers and emails mark it as unverified.</p>
+            <figure class="cs-figure">
+                <img src="../kvack/needs-review.jpg" alt="Needs review queue showing a poor scan whose serial and date do not appear in the page text" loading="lazy">
+                <figcaption>The review queue explains why a reading was flagged and lets a person confirm or correct it.</figcaption>
+            </figure>
+        </section>
+
+        <section class="cs-section">
+            <h2>Nothing is sent without approval</h2>
+            <p>"Find certificates expiring in the next 30 days and draft reminders" starts a LangGraph agent. Code gathers every fact; the model only writes a short intro. The run then pauses until a named person approves it with two clicks. Paused runs are saved in Postgres, so they survive a restart, and every email is sent exactly once even if someone clicks twice.</p>
+            <figure class="cs-figure">
+                <img src="../kvack/approval-confirm.jpg" alt="Approval page showing a drafted calibration reminder email waiting for confirmation" loading="lazy">
+                <figcaption>The final confirmation names the recipient and who is approving.</figcaption>
+            </figure>
+        </section>
+
+        <section class="cs-section">
+            <h2>How it's built</h2>
             <ul>
-                <li><strong>Agent:</strong> a LangGraph agent decides whether to answer a question, extract data or take an action. Actions pause for human approval, and paused runs are saved in Postgres so they survive restarts.</li>
-                <li><strong>Search:</strong> retrieval-augmented generation over a Qdrant vector store, so answers are grounded in the team's own documents.</li>
-                <li><strong>Extraction:</strong> certificate fields are checked against Pydantic models before they're stored.</li>
-                <li><strong>Back end:</strong> a typed Python library behind an async FastAPI service with streamed answers. The AI model can be swapped through config, including fully local models.</li>
-                <li><strong>Front end:</strong> React 19 and TypeScript, with pages for chat, document upload and an approval queue. Approving takes two clicks, and a test proves nothing is sent before the final one.</li>
+                <li><strong>Back end:</strong> Python library behind an async FastAPI service, with the AI model swappable through config. It runs on site with a local model.</li>
+                <li><strong>Search:</strong> hybrid retrieval (meaning + keywords) over Qdrant, re-ranked by a cross-encoder.</li>
+                <li><strong>Agent:</strong> LangGraph with a mandatory human-approval step and an audit log that can't be edited.</li>
+                <li><strong>Front end:</strong> React 19 and TypeScript, with a client generated from the API's OpenAPI schema.</li>
+                <li><strong>Quality:</strong> a 43-question test set, extraction accuracy checks and AI-judged faithfulness. GitHub Actions fails the build if recorded scores drop.</li>
+                <li><strong>Monitoring:</strong> Langfuse traces every model call and links user feedback to it; Prometheus and Grafana track speed, errors and queues, with alerts.</li>
             </ul>
         </section>
 
         <section class="cs-section">
-            <h2>Keeping it trustworthy</h2>
+            <h2>What I learned</h2>
             <ul>
-                <li>GitHub Actions runs linting, type checks and tests on every change, and fails the build if recorded answer-accuracy scores drop below set targets.</li>
-                <li>Live evaluations against the real model run on a self-hosted runner whenever changes reach main.</li>
-                <li>Langfuse traces every model call and links users' thumbs-up/down feedback to it. Prometheus and Grafana track speed and errors, with alerts sent to my phone.</li>
+                <li>Measure before trusting. The test set caught the assistant confidently citing an out-of-date certificate, which led to answering due dates from the database instead.</li>
+                <li>Fail visibly. When splitting a 29-certificate PDF, it's better to over-split and show "could not read one" than to merge two certificates and lose one silently.</li>
+                <li>Speed is a design choice. Switching model settings and adding a text fallback took that 29-certificate bundle from over an hour to about 40 seconds.</li>
             </ul>
         </section>
 

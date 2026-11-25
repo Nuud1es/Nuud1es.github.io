@@ -1682,3 +1682,27 @@ textarea.form-input {
 
 /* Case-study pages: undo the desktop flex layout meant for the main site */
 main.cs-page { display: block; max-width: 760px; }
+
+/* Screenshots inside case-study / blog posts */
+.cs-figure { margin: 22px 0 30px; }
+.cs-figure img {
+    width: 100%;
+    border-radius: 14px;
+    border: 1px solid var(--jet);
+}
+.cs-figure figcaption {
+    margin-top: 10px;
+    color: var(--light-gray70);
+    font-size: var(--fs6);
+    line-height: 1.5;
+}
+.cs-repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--orange-yellow-crayola);
+    font-size: var(--fs6);
+}
+.cs-repo-link:hover { text-decoration: underline; }
+.cs-section .cs-note { color: var(--light-gray70); font-size: var(--fs6); font-style: italic; }
