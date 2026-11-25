@@ -4,26 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gressingham Foods Automation Toolkit - Joe Rudling</title>
-    <link rel="stylesheet" href="../style.css?v=3">
+    <link rel="stylesheet" href="../style.css?v=4">
     <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
 </head>
 <body>
     <main class="cs-page">
         <a href="../index.html" class="cs-back-link"><ion-icon name="arrow-back-outline"></ion-icon> Back to joerudling.dev</a>
-
-        <div class="cs-draft-badge"><ion-icon name="alert-circle-outline"></ion-icon> Draft — outcome metrics still need confirming</div>
-
         <header class="cs-header">
-            <p class="cs-eyebrow">Employer Project — Sanitized Case Study</p>
+            <p class="cs-eyebrow">Case Study — Automation</p>
             <h1 class="cs-title">Gressingham Foods Automation Toolkit</h1>
-            <p class="cs-meta">January 2026 – Present. Since this is employer work, specifics stay generic — no proprietary data, and no exact volumes or figures unless confirmed safe to share.</p>
+            <p class="cs-meta">Gressingham Foods, January 2026 – Present</p>
         </header>
-
-        <div class="cs-banner">
-            <ion-icon name="git-network-outline"></ion-icon>
-            <span>No screenshots of proprietary interfaces unless cleared. Instead: a generic architecture diagram — documents in → local LLM OCR → structured data out → compliance system.</span>
-        </div>
-
         <section class="cs-section">
             <h2>Problem</h2>
             <p>A food production environment with legacy tooling (tkinter-based internal apps) and manual, error-prone compliance processes — including UK Extended Producer Responsibility (EPR) packaging classification and shelf-life data management — running on locked-down hardware with no cloud access.</p>
@@ -31,25 +22,29 @@
 
         <section class="cs-section">
             <h2>Approach</h2>
-            <p>Lead with the OCR pipeline — it's the strongest technical story.</p>
             <ul>
                 <li>Built and deployed a fully local, CPU-only LLM-based OCR pipeline using llama.cpp, running on locked-down hardware with no GPU and no external network access</li>
                 <li>Automated shelf-life data merging, PDF classification, and Outlook-based reminders for compliance deadlines</li>
+                <li>Split multi-page calibration certificate PDFs by instrument serial number and fed the due dates into reminders</li>
+                <li>Started moving the tools from tkinter desktop apps to a Flask web app</li>
             </ul>
-            <p class="cs-todo">TODO: what documents the OCR pipeline processes and why OCR was needed — calibration certificates? Supplier paperwork?</p>
-            <p class="cs-todo">TODO: how accuracy was validated / what the fallback was for low-confidence extractions</p>
-            <p class="cs-todo">TODO: migrated legacy tkinter tooling to Flask — why? Maintainability, multi-user access, web deployment across sites?</p>
         </section>
 
         <section class="cs-section">
             <h2>Outcome</h2>
-            <p class="cs-todo">TODO: time saved, error reduction, or adoption — even an estimate like "cut manual document processing from X hours to Y" is far more compelling than a feature list</p>
-            <p>Deep involvement in FoodOps/QualityApp administration, including writing conditional expressions and debugging live data sources.</p>
+            <p>Manual document handling became a set of tools the quality team uses daily, alongside FoodOps/QualityApp administration (conditional expressions and live data-source fixes). This work led directly to KVACK, an AI assistant for the same documents.</p>
         </section>
 
         <blockquote class="cs-quote">
-            The constraint that makes this notable: getting an LLM pipeline running entirely offline on locked-down hardware is a genuinely uncommon skill to demonstrate.
+            The hardest constraint: getting an LLM pipeline running entirely offline, on locked-down office PCs with no GPU and no admin rights.
         </blockquote>
+
+        <a class="cs-crosslink" href="kvack.html">
+            <div class="cs-crosslink-inner">
+                <span>See what came next: KVACK, an AI assistant for quality documents</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+            </div>
+        </a>
     </main>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

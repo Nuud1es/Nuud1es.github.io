@@ -1488,12 +1488,12 @@ textarea.form-input {
     text-align: center;
     padding: 12px;
     background: var(--eerie-black1);
-    border: 1px dashed var(--jet);
+    border: 1px solid var(--jet);
     color: var(--light-gray70);
 }
 
     .blog-banner-placeholder ion-icon {
-        font-size: 28px;
+        font-size: 64px;
         color: var(--light-gray70);
     }
 
