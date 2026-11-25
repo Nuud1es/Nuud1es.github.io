@@ -1679,3 +1679,6 @@ textarea.form-input {
     .cs-page { padding-top: 50px; }
     .cs-title { font-size: 30px; }
 }
+
+/* Case-study pages: undo the desktop flex layout meant for the main site */
+main.cs-page { display: block; max-width: 760px; }

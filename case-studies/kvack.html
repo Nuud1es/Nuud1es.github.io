@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KVACK — AI Document Assistant - Joe Rudling</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="shortcut icon" href="../logo.png" type="image/x-icon">
+</head>
+<body>
+    <main class="cs-page">
+        <a href="../index.html" class="cs-back-link"><ion-icon name="arrow-back-outline"></ion-icon> Back to joerudling.dev</a>
+
+        <header class="cs-header">
+            <p class="cs-eyebrow">Personal Project — GenAI</p>
+            <h1 class="cs-title">KVACK — AI Document Assistant</h1>
+        </header>
+
+        <!-- TODO: swap for a screenshot or GIF of the chat page answering with a citation, and add the public repo link below once it exists -->
+        <div class="cs-banner">
+            <ion-icon name="image-outline"></ion-icon>
+            <span>Screenshot coming soon</span>
+        </div>
+
+        <section class="cs-section">
+            <h2>What it does</h2>
+            <p>Food-quality teams spend much of their day on documents: calibration certificates, supplier specifications, certificates of analysis and SOPs. KVACK sorts those documents, answers questions about them with the exact page each answer came from, and pulls out key details such as serial numbers and due dates. When something needs doing, like sending a reminder, it drafts the action and waits for a person to approve it.</p>
+        </section>
+
+        <section class="cs-section">
+            <h2>How it works</h2>
+            <ul>
+                <li><strong>Agent:</strong> a LangGraph agent decides whether to answer a question, extract data or take an action. Actions pause for human approval, and paused runs are saved in Postgres so they survive restarts.</li>
+                <li><strong>Search:</strong> retrieval-augmented generation over a Qdrant vector store, so answers are grounded in the team's own documents.</li>
+                <li><strong>Extraction:</strong> certificate fields are checked against Pydantic models before they're stored.</li>
+                <li><strong>Back end:</strong> a typed Python library behind an async FastAPI service with streamed answers. The AI model can be swapped through config, including fully local models.</li>
+                <li><strong>Front end:</strong> React 19 and TypeScript, with pages for chat, document upload and an approval queue. Approving takes two clicks, and a test proves nothing is sent before the final one.</li>
+            </ul>
+        </section>
+
+        <section class="cs-section">
+            <h2>Keeping it trustworthy</h2>
+            <ul>
+                <li>GitHub Actions runs linting, type checks and tests on every change, and fails the build if recorded answer-accuracy scores drop below set targets.</li>
+                <li>Live evaluations against the real model run on a self-hosted runner whenever changes reach main.</li>
+                <li>Langfuse traces every model call and links users' thumbs-up/down feedback to it. Prometheus and Grafana track speed and errors, with alerts sent to my phone.</li>
+            </ul>
+        </section>
+
+        <blockquote class="cs-quote">
+            The same pattern fits any document-heavy operation: messy files in, structured data and cited answers out, and a person accountable for every decision.
+        </blockquote>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -28,7 +28,7 @@
 
                 <div class="info-content">
                     <h1 class="name" title="Joe Rudling">Joe Rudling</h1>
-                    <p class="title">Web Developer & Game Developer</p>
+                    <p class="title">AI Developer · Python & GenAI</p>
                 </div>
                 
                 <button class="info-more-btn" data-sidebar-btn>
@@ -119,7 +119,8 @@
 
                 <section class="about-text">
                     <p>My name is Joe Rudling</p>
-                    <p>I’m a developer with a background In Web and Game Development, using Unreal Engine 4/5 and C++ with Games and starting with HTML/CSS/JavaScript for Web Development and then later learning React.js and TypeScript. as well as general knowledge with Python for Automations, Robotics and general Software Development</p>
+                    <p>I’m a Norwich-based AI developer who builds GenAI tools that real teams use. My main language is Python: FastAPI and Flask back ends, LangChain and LangGraph agents, RAG over vector stores, and Docker to deploy it all. My latest project, <a href="case-studies/kvack.html" style="display: inline; color: var(--orange-yellow-crayola);">KVACK</a>, is an AI assistant that answers questions from a quality team's documents, shows the page each answer came from and waits for a person to approve any action.</p>
+                    <p>I came to AI through Games Development (Unreal Engine, C++) and web work (React, TypeScript), then robotics simulation at Advantech in Japan and automation at Gressingham Foods.</p>
                     <p>I am passionate about developing well-thought-out software with and a strong determination of understanding a project and meeting project goals.</p>
                 </section>
 
@@ -127,6 +128,17 @@
                     <h3 class="h3 service-title">What I'm doing</h3>
 
                     <ul class="service-list">
+                        <li class="service-item">
+                            <div class="service-icon-box">
+                                <ion-icon name="sparkles-outline" style="font-size: 40px; color: var(--orange-yellow-crayola);"></ion-icon>
+                            </div>
+
+                            <div class="service-content-box">
+                                <h4 class="h4 service-item-title">GenAI development</h4>
+                                <p class="service-item-text">Building RAG assistants and LangGraph agents in Python, served with FastAPI, deployed with Docker and monitored in production</p>
+                            </div>
+                        </li>
+
                         <li class="service-item">
                             <div class="service-icon-box">
                                 <img src="UnrealEngine.png" alt="icon" width="60">
@@ -323,6 +335,7 @@
                                 <span>Sep - Nov 2025</span>
                                 <p class="timeline-text">•Using issac sim to create and simulate a robot using holonomic movement </p>
                                 <p class="timeline-text">•Using Ros2 to controll the robot and making a interactive point movmenet plugin </p>
+                                <p class="timeline-text">•Connected an LLM to the robot using LangChain, LangGraph and FastAPI so it could describe the objects it detected to trade-show visitors</p>
                                 <p class="timeline-text">•Diagnoing PXE server problems during boot with programs like wireshark and self made tools</p>
                                 <p class="timeline-text">•Experience Japan work/life culture </p>
                                 <p class="timeline-text">•Communicating with a team to explain / fix problems  </p>
@@ -351,6 +364,10 @@
                         <ol class="timeline-list">
                             <li class="timeline-item">
                                 <h4 class="h4 timeline-item-title">Technical Skills </h4>
+                                <span>Generative AI</span>
+                                <p class="timeline-text">RAG pipelines (Qdrant), LangChain and LangGraph agents, prompt engineering, running LLMs locally (llama.cpp, Ollama) and through APIs.</p>
+                                <span>Python &amp; Back End</span>
+                                <p class="timeline-text">FastAPI and Flask services, REST APIs, Docker and GitHub Actions CI/CD, monitoring with Langfuse and Grafana.</p>
                                 <span>Unreal Engine 4/5</span>
                                 <p class="timeline-text">Proficient in using Unreal Engine 4 and 5 for game development, including both Blueprints and C++ programming. </p>
                                 <span>Game Development</span>
@@ -529,6 +546,26 @@
 
                 <section class="blog-posts">
                     <ul class="blog-posts-list">
+                        <li class="blog-post-item">
+                            <a href="case-studies/kvack.html">
+                                <div class="blog-banner-box blog-banner-placeholder">
+                                    <ion-icon name="image-outline"></ion-icon>
+                                    <span>Image needed</span>
+                                </div>
+
+                                <div class="blog-content">
+                                    <div class="blog-meta">
+                                        <p class="blog-category">GenAI</p>
+                                        <span class="dot"></span>
+                                        <time datetime="2026-11-25">Nov 25, 2026</time>
+                                    </div>
+
+                                    <h3 class="h3 blog-item-title">KVACK — AI Document Assistant</h3>
+                                    <p class="blog-text">An AI assistant for food-quality teams: it sorts certificates, specs and SOPs, answers questions with the exact page as its source, pulls out key details like due dates, and never acts without a person's approval. Python, FastAPI, LangGraph, RAG, React and TypeScript, tested and monitored.</p>
+                                </div>
+                            </a>
+                        </li>
+
                         <li class="blog-post-item">
                             <a href="emotionhead/index.html">
                                 <figure class="blog-banner-box">
